@@ -5,11 +5,12 @@ Frequently Asked Questions
 No. CHIP comes preinstalled with the CHIP Operating System and several applications. Just power on, and get started.
 
 ## Why composite video?
-Several reasons: 
-  * Televisions are the most commonly available screen in the world and the vast majority of them have a composite input. 
-  * Composite video can be integrated without adding licensing fees to the cost of C.H.I.P. 
+Several reasons:
+
+  * Televisions are the most commonly available screen in the world and the vast majority of them have a composite input.
+  * Composite video can be integrated without adding licensing fees to the cost of C.H.I.P.
   * Composite is a very low profile connector, allowing us to keep the footprint of the board small for people wanting to build C.H.I.P. into projects.
-  
+
 ## Is CHIP an exposed circuit board?
 Yes! Not having a case for C.H.I.P. is one of the ways we are able to keep our costs down. As makers, we’re excited to introduce people to the physical components of computers and show them that electronics aren’t scary, they’re fun! We hope to spark curiosity and encourage people to begin tinkering themselves.
 
@@ -100,7 +101,7 @@ No. But it does have built-in 802.11b/g/n wifi. But if you like wires, you can u
 ## Does C.H.I.P. come with a banana?
 C.H.I.P. is strictly B.Y.O.B. ;)
 
-## Is there a command that lets me know more about the CPU and Memory? 
+## Is there a command that lets me know more about the CPU and Memory?
 It's a computer! It will tell you anything. If you want to find out more details about CHIP's processor, use the command:
 
 ```shell
@@ -113,7 +114,7 @@ This will give output similar to:
 processor	: 0
 model name	: ARMv7 Processor rev 2 (v7l)
 BogoMIPS	: 1001.88
-Features	: half thumb fastmult vfp edsp neon vfpv3 tls vfpd32 
+Features	: half thumb fastmult vfp edsp neon vfpv3 tls vfpd32
 CPU implementer	: 0x41
 CPU architecture: 7
 CPU variant	: 0x3
