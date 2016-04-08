@@ -159,7 +159,7 @@ There's a simple search bar to make it easy to find packages you are interested 
 ![Install software with Synaptic](images/appscreen_synaptic.jpg)
 
 ### Example: Installing Scratch Programming Environment
-Using Synapitc is very easy. For example, if you wanted to install the Scratch Programming Environment, you can simply search for "scratch" and you'll get a lot of results. Scroll through, and you'll eventually find "scratch" in the packages window.
+Using Synaptic is very easy. For example, if you wanted to install the Scratch Programming Environment, you can simply search for "scratch" and you'll get a lot of results. Scroll through, and you'll eventually find "scratch" in the packages window.
 However, you'll probably want to narrow your results with better search terms, such as "scratch programming environments"
 
 ![Search Synaptic for Scratch](images/screen_scratchsearch.jpg)
