@@ -87,6 +87,6 @@ If you're a beginner, here's a quick reference of some really important and comm
 * **find** look for files in the filesystem. Ex: `find ~/Documents -name particular.txt -type f` will look for the file with the name `particular.txt` in the Documents directory.
 * **chmod** change mode. Used for file permissions, which can be important when sharing things on the network, scripting actions, and many more reasons. 
 * **htop** display the processes currently alive on the CPU. If things seem slow, or you want to see how much CPU or memory a program is using, just type `htop` to see a table of all running processes, then type `q` when you want to exit.
-* **scp** secure copy. copy a file from one computer to another over a network. Ex: `cp Pictures/Vacation/motel.jpg Pictures/Vacation/accident.jpg chip@otherchip.local:~/Pictures` copies a couple jpegs to another computer on the network.
+* **scp** secure copy. copy a file from one computer to another over a network. Ex: `scp Pictures/Vacation/motel.jpg Pictures/Vacation/accident.jpg chip@otherchip.local:~/Pictures` copies a couple jpegs to another computer on the network.
 * **ssh** secure shell. access another computer on the network and use the terminal commands to make changes and control it. Ex: `ssh chip@chip.local` to access your CHIP on a local network.
 * **CTRL C** if you can't use the terminal because a process is taking too long, type CTRL-C on your keyboard to cancel the most recent command.
