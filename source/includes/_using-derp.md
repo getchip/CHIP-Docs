@@ -78,6 +78,8 @@ Then use the [`apt-get`](#apt-get) command to install the language packs and run
 ```shell
 sudo apt-get update && sudo apt-get install locales && sudo dpkg-reconfigure locales && sudo locale-gen
 ```
+You'll get a large menu to select locales. Use the arrow keys to scroll down and spacebar to mark your location with an [*]. It's advised that you choose the location marked `UTF8`. Others are somewhat arcane edge cases! Hit return to continue.
+
 You can set the timezone with 
 ```
 sudo dpkg-reconfigure tzdata
