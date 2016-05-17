@@ -225,7 +225,9 @@ The `nconfig` command will display a text interface in your terminal. Use your a
 ```
 
 Now let's build your buildroot with your custom additions:
+```shell
   make
+```
 This will take a while, maybe an hour. When finished, flash CHIP with the script:
 
 ```shell
