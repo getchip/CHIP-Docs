@@ -7,9 +7,15 @@ The initial batch of CHIPs shipped with a problem in the NAND flash storage. Don
  * C.H.I.P.
  * Standard-USB to micro-USB connector
  * Thin Paper clip (a jumper wire works too)
- * Computer with Ubuntu 14.4 or Windows 7, 8, or 10
+ * Computer with Chrome or Chromium browser OR Ubuntu 14.4 or Windows 7, 8, or 10
 
 ![Required materials for repairing](repair_all_the_things.jpg)
+
+## The Really Easy Way Using A Browser
+
+The easiest way to repair CHIP's NAND is to use the online tools. You'll need to install Google's [Chrome browser](https://www.google.com/chrome/browser/desktop/index.html) or the open-source [Chromium](https://www.chromium.org/getting-involved/download-chromium) browser. Once installed, open the browser and visit [http://flash.getchip.com](http://flash.getchip.com) and follow the instructions.
+
+If this is not appealing to you for whatever reason, then read on for instructions on repairing NAND directly from your computer.
 
 ## For Ubuntu 14.4
 
