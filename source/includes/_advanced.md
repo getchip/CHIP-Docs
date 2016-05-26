@@ -171,7 +171,7 @@ Buildroot is a lean operating system, and does not have a package manager to ins
   cd ~/CHIP-tools
   ./chip-update-firmware.sh -f
 ```
-The `-f` option means "fastboot." If you have problems flashing, particularly on Windows or OS X, you can run `./chip-update-firmware.sh` to disable fastboot flashing. 
+The `-f` option means "fastboot." If you have problems flashing, particularly on Windows or OS X, you can run `./chip-update-firmware.sh` to disable fastboot flashing.
 
 During flashing, the terminal will fill with messages.  If successful, you'll see C.H.I.P. run through a hardware test, with the answers being 'OK'.  If C.H.I.P. is 'OK', you can remove the jumper wire. Here is a [sample successful output](#buildroot-output).
 
@@ -181,7 +181,7 @@ If you want to flash CHIP with the debian OS with no window manager or GUI
 ```shell
   cd ~/CHIP-tools
   ./chip-update-firmware.sh -d -f
-```  
+```
 
 The `-f` option means "fastboot." If you have problems flashing, particularly on Windows or OS X, you can disable fastboot by leaving off the -f option: `./chip-update-firmware.sh -d`. Here is a [sample successful output](#debian-output).
 
@@ -191,7 +191,7 @@ If you want to flash CHIP with the complete CHIP Operating System
 ```shell
   cd ~/CHIP-tools
   ./chip-update-firmware.sh -d -b stable-gui -f
-```  
+```
 
 During flashing, the terminal will fill with messages. If successful, you'll see C.H.I.P. run through a hardware test, with the answers being 'OK'.  If C.H.I.P. is 'OK', you can remove the jumper wire. Here is a [sample successful output](#debian-output). Because of filesize, the "gui" option must also include the `-f` fastboot option. Windows and OS X are not yet supported as flashing hosts.
 
@@ -217,7 +217,7 @@ If you want to customize buildroot, use these commands before you run the `./chi
   make chip_defconfig
   make nconfig
 ```
-  
+
 The `nconfig` command will display a text interface in your terminal. Use your arrow keys to browse and select additional software for the buildroot OS. When you're finished with your selections, exit by hitting the F9 key, which will automatically save your custom buildroot to:
 
 ```shell
@@ -259,7 +259,7 @@ HTTP request sent, awaiting response... 200 OK
 Length: 54525952 (52M) [binary/octet-stream]
 Saving to: ‘/home/doge/gits/CHIP-tools/.firmware/images/rootfs.ubi’
 
-100%[======================================>] 54,525,952  1.83MB/s   in 29s    
+100%[======================================>] 54,525,952  1.83MB/s   in 29s
 
 2015-10-21 15:59:45 (1.82 MB/s) - ‘/home/doge/gits/CHIP-tools/.firmware/images/rootfs.ubi’ saved [54525952/54525952]
 
@@ -337,7 +337,7 @@ HTTP request sent, awaiting response... 200 OK
 Length: 245366784 (234M) [binary/octet-stream]
 Saving to: ‘/home/doge/gits/CHIP-tools/.firmware/images/rootfs.ubi’
 
-100%[======================================>] 245,366,784 1.27MB/s   in 2m 11s 
+100%[======================================>] 245,366,784 1.27MB/s   in 2m 11s
 
 2015-10-21 16:08:48 (1.78 MB/s) - ‘/home/doge/gits/CHIP-tools/.firmware/images/rootfs.ubi’ saved [245366784/245366784]
 
@@ -396,13 +396,14 @@ poweroff... OK
 ```
 
 #### Failure
-There are a couple common errors that occur when flashing. 
+There are a couple common errors that occur when flashing.
 
 The first is a that CHIP is not in `fel` mode, ready to receive firmware. There are three possible reasons for this:
+
   * You already successfully flashed CHIP, and haven't disconnected the USB cable from your computer.
   * The jumper wire between Pins 7 & 39 is either not present, loose, or the jumper is in the wrong holes.
   * There is a problem with the USB cable.
-  
+
 You'll know this is the problem when you see this error in the terminal window:
 
 ```shell
@@ -492,8 +493,8 @@ sudo ln -s $PWD/fel /usr/local/bin/fel
 Clone the CHIP-tools repository
 
 ```shell
-cd .. 
-git clone http://github.com/NextThingCo/CHIP-tools 
+cd ..
+git clone http://github.com/NextThingCo/CHIP-tools
 cd CHIP-tools
 ```
 
@@ -525,8 +526,8 @@ cd sunxi-tools
 make
 sudo rm -f /usr/local/bin/fel
 sudo ln -s $PWD/fel /usr/local/bin/fel
-cd .. 
-git clone http://github.com/NextThingCo/CHIP-tools 
+cd ..
+git clone http://github.com/NextThingCo/CHIP-tools
 cd CHIP-tools
 ```
 
@@ -554,10 +555,10 @@ nmcli device wifi list
 The output will list available access points
 
 ```shell
-*  SSID      MODE   CHAN  RATE       SIGNAL  BARS  SECURITY  
-*  NextThing HQ    Infra  11    54 Mbit/s  100     ▂▄▆█  --        
-   NextThing Shop  Infra  6     54 Mbit/s  30      ▂___  WPA1 WPA2 
-   2WIRE533        Infra  10    54 Mbit/s  44      ▂▄__  WPA1 WPA2 
+*  SSID      MODE   CHAN  RATE       SIGNAL  BARS  SECURITY
+*  NextThing HQ    Infra  11    54 Mbit/s  100     ▂▄▆█  --
+   NextThing Shop  Infra  6     54 Mbit/s  30      ▂___  WPA1 WPA2
+   2WIRE533        Infra  10    54 Mbit/s  44      ▂▄__  WPA1 WPA2
 ```
 
 #### Step 2: Connect to a network
@@ -598,11 +599,11 @@ nmcli device status
 which outputs a list of the various network devices and their connections. For example, a successful connection would look like this:
 
 ```shell
-DEVICE   TYPE      STATE         CONNECTION 
-wlan0    wifi      connected     NextThing HQ   
-wlan1    wifi      disconnected  --         
-ip6tnl0  ip6tnl    unmanaged     --         
-lo       loopback  unmanaged     --         
+DEVICE   TYPE      STATE         CONNECTION
+wlan0    wifi      connected     NextThing HQ
+wlan1    wifi      disconnected  --
+ip6tnl0  ip6tnl    unmanaged     --
+lo       loopback  unmanaged     --
 sit0     sit       unmanaged     --
 ```
 
@@ -615,8 +616,8 @@ nmcli connection show --active
 which outputs like so:
 
 ```shell
-NAME  UUID                                  TYPE             DEVICE 
-NTC   59962bac-3441-437b-94ea-bf31dee66e8f  802-11-wireless  wlan0 
+NAME  UUID                                  TYPE             DEVICE
+NTC   59962bac-3441-437b-94ea-bf31dee66e8f  802-11-wireless  wlan0
 ```
 
 After you have connected once, your C.H.I.P. will automatically connect to this network next time you reboot (or start NetworkManager services).
@@ -651,7 +652,7 @@ sudo nmcli dev disconnect wlan0
 You may want to prevent auto-connection to a network, so you can use this command to "forget" a network:
 
 ```shell
-sudo nmcli connection delete id  (your wifi network name/SSID) 
+sudo nmcli connection delete id  (your wifi network name/SSID)
 ```
 
 #### Troubleshooting
@@ -677,7 +678,7 @@ Error: Timeout 90 sec expired.
 Try connecting again with the correct password.
 
 ##### Failed ping
-If you don't have access to the internet, your ping to an outside IP will fail. 
+If you don't have access to the internet, your ping to an outside IP will fail.
 It is possible that you can connect to a wireless network, but have no access to the internet, so you'd see a connection when you request device status, but have a failed ping. This indicates a problem or restriction with the router or the access point, not a problem with the CHIP.
 
 A failed ping looks something like:
@@ -730,11 +731,11 @@ These three commands will, in turn, enable wifi, scan for access points, and see
   connmanctl scan wifi
   connmanctl services
 ```
-  
+
 The `services` command has output similar to:
 
 ```shell
-*AO 
+*AO
     NTC                  wifi_7cc70905cd77_4e5443_managed_psk
                          wifi_7cc70905cd77_hidden_managed_psk
     NTC Guest            wifi_7cc70905cd77_4e5443204775657374_managed_psk
@@ -851,8 +852,8 @@ ping: sendto: Network is unreachable
 ```
 
 ##### Troubleshooting Connection Problems
-  * You'll need to make sure you used the right network when you used the connect commnand. 
-  * Review any messages that the connect commnand gave you. Did they look like the examples of a successful connection? 
+  * You'll need to make sure you used the right network when you used the connect commnand.
+  * Review any messages that the connect commnand gave you. Did they look like the examples of a successful connection?
   * If everything checked out until you got to `ping`, there's a good chance the problem is with your router or connection to the internet.
 
 ##### connman not installed error
@@ -939,7 +940,7 @@ Update your apt repository list if you haven't done so recently:
 ```shell
   sudo apt-get update
 ```
-  
+
 Then install ALSA:
 
 ```shell
@@ -1035,7 +1036,7 @@ In this tutorial, we'll describe how you can use the USB port to add more storag
 
 This tutorial is suitable for the buildroot image. If you are following this for other Linux distributions, there are some adjustments that you'll need to make for paths, permissions, and enabling 'sudo.' With buildroot, you work as the root user, so this tutorial is appropriately terse.
 
-### Requirements 
+### Requirements
   * USB thumb drive or hard drive
   * Computer running OS X 10.10+, Ubuntu 14.04+, or Windows 7+ (to format USB device, if needed)
 
@@ -1091,7 +1092,7 @@ which lists them, along with the names you might have initialized them with:
 ```
 
 ### Step 2: Mount the Drive Device to Your Filesystem
-Now that you know where your partition is, it's time to mount the partition so you can access the files. 
+Now that you know where your partition is, it's time to mount the partition so you can access the files.
 
 First, make a directory where your drive can mount:
 
@@ -1127,6 +1128,7 @@ vi /etc/fstab
 ```
 
 Getting around vi is not very intuitive. If you are new to it, here's a quick guide on getting this text into the fstab document:
+
   * 'arrow' key to the end of the file,
   * press the 'i' key to insert text
   * type (or copy-paste) this:
@@ -1135,9 +1137,10 @@ Getting around vi is not very intuitive. If you are new to it, here's a quick gu
 /dev/sda1 /drives vfat defaults 0 0
 ```
 
-To exit vi, 
-  * press the 'esc' key, 
-  * type ':' (colon), 
+To exit vi,
+
+  * press the 'esc' key,
+  * type ':' (colon),
   * type 'wq' to write and quit vi.
 
 You can test your work with:
@@ -1227,9 +1230,9 @@ Pair to a device with the MAC address and the `pair` command:
 This may fail if the device is powered off, goes out of range, or your toddler spills water on it. Here's what failure looks like:
 
 ```shell
-Attempting to pair with 1C:1A:C0:85:5E:2C 
-[CHG] Device 1C:1A:C0:85:5E:2C Connected: yes 
-[CHG] Device 1C:1A:C0:85:5E:2C Connected: no 
+Attempting to pair with 1C:1A:C0:85:5E:2C
+[CHG] Device 1C:1A:C0:85:5E:2C Connected: yes
+[CHG] Device 1C:1A:C0:85:5E:2C Connected: no
 Failed to pair: org.bluez.Error.AuthenticationCanceled
 ```
 
@@ -1343,7 +1346,7 @@ If you get the response
 Then there's a problem with CHIP recognizing the Bluetooth module. [Read the very first instructions](#important!) at the top of this tutorial.
 
 ## Install X-windows
-If you want a windowed desktop on C.H.I.P., you can install X-Windows. 
+If you want a windowed desktop on C.H.I.P., you can install X-Windows.
 
 ### Requirements
   * CHIP [connected to WiFi](#connecting-c-h-i-p-to-wi-fi-with-nmcli)
