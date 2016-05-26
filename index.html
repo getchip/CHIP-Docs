@@ -374,6 +374,8 @@ Then use the <a href="#apt-get"><code class="prettyprint">apt-get</code></a> com
 <pre class="highlight shell"><code>sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get install locales <span class="o">&amp;&amp;</span> sudo dpkg-reconfigure locales <span class="o">&amp;&amp;</span> sudo locale-gen
 </code></pre>
 
+<p>You&rsquo;ll get a large menu to select locales. Use the arrow keys to scroll down and spacebar to mark your location with an [*]. It&rsquo;s advised that you choose the location marked <code class="prettyprint">UTF8</code>. Others are somewhat arcane edge cases! Hit return to continue.</p>
+
 <p>You can set the timezone with 
 <code class="prettyprint">
 sudo dpkg-reconfigure tzdata
@@ -1051,7 +1053,7 @@ vagrant ssh
   ./chip-update-firmware.sh -f
 </code></pre>
 
-<p>The <code class="prettyprint">-f</code> option means &ldquo;fastboot.&rdquo; If you have problems flashing, particularly on Windows or OS X, you can run <code class="prettyprint">./chip-update-firmware.sh</code> to disable fastboot flashing. </p>
+<p>The <code class="prettyprint">-f</code> option means &ldquo;fastboot.&rdquo; If you have problems flashing, particularly on Windows or OS X, you can run <code class="prettyprint">./chip-update-firmware.sh</code> to disable fastboot flashing.</p>
 
 <p>During flashing, the terminal will fill with messages.  If successful, you&rsquo;ll see C.H.I.P. run through a hardware test, with the answers being &lsquo;OK&rsquo;.  If C.H.I.P. is &#39;OK&rsquo;, you can remove the jumper wire. Here is a <a href="#buildroot-output">sample successful output</a>.</p>
 
@@ -1098,7 +1100,9 @@ vagrant ssh
 </code></pre>
 
 <p>Now let&rsquo;s build your buildroot with your custom additions:
+<code class="prettyprint">shell
   make
+</code>
 This will take a while, maybe an hour. When finished, flash CHIP with the script:</p>
 <pre class="highlight shell"><code>  <span class="nb">cd</span> ~/CHIP-tools
   <span class="nv">BUILDROOT_OUTPUT_DIR</span><span class="o">=</span>../CHIP-buildroot/output ./chip-fel-flash.sh
@@ -1128,7 +1132,7 @@ HTTP request sent, awaiting response... 200 OK
 Length: 54525952 <span class="o">(</span>52M<span class="o">)</span> <span class="o">[</span>binary/octet-stream]
 Saving to: ‘/home/doge/gits/CHIP-tools/.firmware/images/rootfs.ubi’
 
-100%[<span class="o">======================================</span>&gt;] 54,525,952  1.83MB/s   <span class="k">in </span>29s    
+100%[<span class="o">======================================</span>&gt;] 54,525,952  1.83MB/s   <span class="k">in </span>29s
 
 2015-10-21 15:59:45 <span class="o">(</span>1.82 MB/s<span class="o">)</span> - ‘/home/doge/gits/CHIP-tools/.firmware/images/rootfs.ubi’ saved <span class="o">[</span>54525952/54525952]
 
@@ -1205,7 +1209,7 @@ HTTP request sent, awaiting response... 200 OK
 Length: 245366784 <span class="o">(</span>234M<span class="o">)</span> <span class="o">[</span>binary/octet-stream]
 Saving to: ‘/home/doge/gits/CHIP-tools/.firmware/images/rootfs.ubi’
 
-100%[<span class="o">======================================</span>&gt;] 245,366,784 1.27MB/s   <span class="k">in </span>2m 11s 
+100%[<span class="o">======================================</span>&gt;] 245,366,784 1.27MB/s   <span class="k">in </span>2m 11s
 
 2015-10-21 16:08:48 <span class="o">(</span>1.78 MB/s<span class="o">)</span> - ‘/home/doge/gits/CHIP-tools/.firmware/images/rootfs.ubi’ saved <span class="o">[</span>245366784/245366784]
 
@@ -1265,12 +1269,15 @@ poweroff... OK
 
 <h4 id="failure">Failure</h4>
 
-<p>There are a couple common errors that occur when flashing. </p>
+<p>There are a couple common errors that occur when flashing.</p>
 
-<p>The first is a that CHIP is not in <code class="prettyprint">fel</code> mode, ready to receive firmware. There are three possible reasons for this:
-  * You already successfully flashed CHIP, and haven&rsquo;t disconnected the USB cable from your computer.
-  * The jumper wire between Pins 7 &amp; 39 is either not present, loose, or the jumper is in the wrong holes.
-  * There is a problem with the USB cable.</p>
+<p>The first is a that CHIP is not in <code class="prettyprint">fel</code> mode, ready to receive firmware. There are three possible reasons for this:</p>
+
+<ul>
+<li>You already successfully flashed CHIP, and haven&rsquo;t disconnected the USB cable from your computer.</li>
+<li>The jumper wire between Pins 7 &amp; 39 is either not present, loose, or the jumper is in the wrong holes.</li>
+<li>There is a problem with the USB cable.</li>
+</ul>
 
 <p>You&rsquo;ll know this is the problem when you see this error in the terminal window:</p>
 <pre class="highlight shell"><code><span class="o">==</span> upload the SPL to SRAM and execute it <span class="o">==</span>
@@ -1350,8 +1357,8 @@ sudo ln -s <span class="nv">$PWD</span>/fel /usr/local/bin/fel
 </code></pre>
 
 <p>Clone the CHIP-tools repository</p>
-<pre class="highlight shell"><code><span class="nb">cd</span> .. 
-git clone http://github.com/NextThingCo/CHIP-tools 
+<pre class="highlight shell"><code><span class="nb">cd</span> ..
+git clone http://github.com/NextThingCo/CHIP-tools
 <span class="nb">cd </span>CHIP-tools
 </code></pre>
 
@@ -1380,8 +1387,8 @@ git clone http://github.com/NextThingCo/sunxi-tools
 make
 sudo rm -f /usr/local/bin/fel
 sudo ln -s <span class="nv">$PWD</span>/fel /usr/local/bin/fel
-<span class="nb">cd</span> .. 
-git clone http://github.com/NextThingCo/CHIP-tools 
+<span class="nb">cd</span> ..
+git clone http://github.com/NextThingCo/CHIP-tools
 <span class="nb">cd </span>CHIP-tools
 </code></pre>
 
@@ -1411,10 +1418,10 @@ git clone http://github.com/NextThingCo/CHIP-tools
 </code></pre>
 
 <p>The output will list available access points</p>
-<pre class="highlight shell"><code><span class="k">*</span>  SSID      MODE   CHAN  RATE       SIGNAL  BARS  SECURITY  
-<span class="k">*</span>  NextThing HQ    Infra  11    54 Mbit/s  100     ▂▄▆█  --        
-   NextThing Shop  Infra  6     54 Mbit/s  30      ▂___  WPA1 WPA2 
-   2WIRE533        Infra  10    54 Mbit/s  44      ▂▄__  WPA1 WPA2 
+<pre class="highlight shell"><code><span class="k">*</span>  SSID      MODE   CHAN  RATE       SIGNAL  BARS  SECURITY
+<span class="k">*</span>  NextThing HQ    Infra  11    54 Mbit/s  100     ▂▄▆█  --
+   NextThing Shop  Infra  6     54 Mbit/s  30      ▂___  WPA1 WPA2
+   2WIRE533        Infra  10    54 Mbit/s  44      ▂▄__  WPA1 WPA2
 </code></pre>
 
 <h4 id="step-2-connect-to-a-network">Step 2: Connect to a network</h4>
@@ -1455,11 +1462,11 @@ sudo nmcli con up id <span class="s1">'mywifi'</span>
 </code></pre>
 
 <p>which outputs a list of the various network devices and their connections. For example, a successful connection would look like this:</p>
-<pre class="highlight shell"><code>DEVICE   TYPE      STATE         CONNECTION 
-wlan0    wifi      connected     NextThing HQ   
-wlan1    wifi      disconnected  --         
-ip6tnl0  ip6tnl    unmanaged     --         
-lo       loopback  unmanaged     --         
+<pre class="highlight shell"><code>DEVICE   TYPE      STATE         CONNECTION
+wlan0    wifi      connected     NextThing HQ
+wlan1    wifi      disconnected  --
+ip6tnl0  ip6tnl    unmanaged     --
+lo       loopback  unmanaged     --
 sit0     sit       unmanaged     --
 </code></pre>
 
@@ -1468,8 +1475,8 @@ sit0     sit       unmanaged     --
 </code></pre>
 
 <p>which outputs like so:</p>
-<pre class="highlight shell"><code>NAME  UUID                                  TYPE             DEVICE 
-NTC   59962bac-3441-437b-94ea-bf31dee66e8f  802-11-wireless  wlan0 
+<pre class="highlight shell"><code>NAME  UUID                                  TYPE             DEVICE
+NTC   59962bac-3441-437b-94ea-bf31dee66e8f  802-11-wireless  wlan0
 </code></pre>
 
 <p>After you have connected once, your C.H.I.P. will automatically connect to this network next time you reboot (or start NetworkManager services).</p>
@@ -1498,7 +1505,7 @@ NTC   59962bac-3441-437b-94ea-bf31dee66e8f  802-11-wireless  wlan0
 </code></pre>
 
 <p>You may want to prevent auto-connection to a network, so you can use this command to &ldquo;forget&rdquo; a network:</p>
-<pre class="highlight shell"><code>sudo nmcli connection delete id  <span class="o">(</span>your wifi network name/SSID<span class="o">)</span> 
+<pre class="highlight shell"><code>sudo nmcli connection delete id  <span class="o">(</span>your wifi network name/SSID<span class="o">)</span>
 </code></pre>
 
 <h4 id="troubleshooting">Troubleshooting</h4>
@@ -1526,7 +1533,7 @@ Error: Timeout 90 sec expired.
 
 <h5 id="failed-ping">Failed ping</h5>
 
-<p>If you don&rsquo;t have access to the internet, your ping to an outside IP will fail. 
+<p>If you don&rsquo;t have access to the internet, your ping to an outside IP will fail.
 It is possible that you can connect to a wireless network, but have no access to the internet, so you&rsquo;d see a connection when you request device status, but have a failed ping. This indicates a problem or restriction with the router or the access point, not a problem with the CHIP.</p>
 
 <p>A failed ping looks something like:</p>
@@ -1582,7 +1589,7 @@ pipe 4
 </code></pre>
 
 <p>The <code class="prettyprint">services</code> command has output similar to:</p>
-<pre class="highlight shell"><code><span class="k">*</span>AO 
+<pre class="highlight shell"><code><span class="k">*</span>AO
     NTC                  wifi_7cc70905cd77_4e5443_managed_psk
                          wifi_7cc70905cd77_hidden_managed_psk
     NTC Guest            wifi_7cc70905cd77_4e5443204775657374_managed_psk
@@ -1683,8 +1690,8 @@ ping: sendto: Network is unreachable
 <h5 id="troubleshooting-connection-problems">Troubleshooting Connection Problems</h5>
 
 <ul>
-<li>You&rsquo;ll need to make sure you used the right network when you used the connect commnand. </li>
-<li>Review any messages that the connect commnand gave you. Did they look like the examples of a successful connection? </li>
+<li>You&rsquo;ll need to make sure you used the right network when you used the connect commnand.</li>
+<li>Review any messages that the connect commnand gave you. Did they look like the examples of a successful connection?</li>
 <li>If everything checked out until you got to <code class="prettyprint">ping</code>, there&rsquo;s a good chance the problem is with your router or connection to the internet.</li>
 </ul>
 
@@ -1886,7 +1893,7 @@ sudo apt-get install python-dev
 
 <h3 id="step-2-mount-the-drive-device-to-your-filesystem">Step 2: Mount the Drive Device to Your Filesystem</h3>
 
-<p>Now that you know where your partition is, it&rsquo;s time to mount the partition so you can access the files. </p>
+<p>Now that you know where your partition is, it&rsquo;s time to mount the partition so you can access the files.</p>
 
 <p>First, make a directory where your drive can mount:</p>
 <pre class="highlight shell"><code>sudo mkdir /drives
@@ -1913,17 +1920,23 @@ ls
 <pre class="highlight shell"><code>vi /etc/fstab
 </code></pre>
 
-<p>Getting around vi is not very intuitive. If you are new to it, here&rsquo;s a quick guide on getting this text into the fstab document:
-  * &#39;arrow&rsquo; key to the end of the file,
-  * press the &#39;i&rsquo; key to insert text
-  * type (or copy-paste) this:</p>
+<p>Getting around vi is not very intuitive. If you are new to it, here&rsquo;s a quick guide on getting this text into the fstab document:</p>
+
+<ul>
+<li>&#39;arrow&rsquo; key to the end of the file,</li>
+<li>press the &#39;i&rsquo; key to insert text</li>
+<li>type (or copy-paste) this:</li>
+</ul>
 <pre class="highlight shell"><code>/dev/sda1 /drives vfat defaults 0 0
 </code></pre>
 
-<p>To exit vi, 
-  * press the &#39;esc&rsquo; key, 
-  * type &rsquo;:&rsquo; (colon), 
-  * type &#39;wq&rsquo; to write and quit vi.</p>
+<p>To exit vi,</p>
+
+<ul>
+<li>press the &#39;esc&rsquo; key,</li>
+<li>type &rsquo;:&rsquo; (colon),</li>
+<li>type &#39;wq&rsquo; to write and quit vi.</li>
+</ul>
 
 <p>You can test your work with:</p>
 <pre class="highlight shell"><code>mount -a
@@ -1998,9 +2011,9 @@ ls
 </code></pre>
 
 <p>This may fail if the device is powered off, goes out of range, or your toddler spills water on it. Here&rsquo;s what failure looks like:</p>
-<pre class="highlight shell"><code>Attempting to pair with 1C:1A:C0:85:5E:2C 
-<span class="o">[</span>CHG] Device 1C:1A:C0:85:5E:2C Connected: yes 
-<span class="o">[</span>CHG] Device 1C:1A:C0:85:5E:2C Connected: no 
+<pre class="highlight shell"><code>Attempting to pair with 1C:1A:C0:85:5E:2C
+<span class="o">[</span>CHG] Device 1C:1A:C0:85:5E:2C Connected: yes
+<span class="o">[</span>CHG] Device 1C:1A:C0:85:5E:2C Connected: no
 Failed to pair: org.bluez.Error.AuthenticationCanceled
 </code></pre>
 
@@ -2091,7 +2104,7 @@ Failed to connect: org.bluez.Error.Failed
 
 <h2 id="install-x-windows">Install X-windows</h2>
 
-<p>If you want a windowed desktop on C.H.I.P., you can install X-Windows. </p>
+<p>If you want a windowed desktop on C.H.I.P., you can install X-Windows.</p>
 
 <h3 id="requirements">Requirements</h3>
 
@@ -2551,10 +2564,16 @@ You&rsquo;ll also need to modify the hosts file where you&rsquo;ll need to chang
 <li>C.H.I.P.</li>
 <li>Standard-USB to micro-USB connector</li>
 <li>Thin Paper clip (a jumper wire works too)</li>
-<li>Computer with Ubuntu 14.4 or Windows 7, 8, or 10</li>
+<li>Computer with Chrome or Chromium browser OR Ubuntu 14.4 or Windows 7, 8, or 10</li>
 </ul>
 
 <p><img alt="Required materials for repairing" src="images/repair_all_the_things.jpg" /></p>
+
+<h2 id="the-really-easy-way-using-a-browser">The Really Easy Way Using A Browser</h2>
+
+<p>The easiest way to repair CHIP&rsquo;s NAND is to use the online tools. You&rsquo;ll need to install Google&rsquo;s <a href="https://www.google.com/chrome/browser/desktop/index.html">Chrome browser</a> or the open-source <a href="https://www.chromium.org/getting-involved/download-chromium">Chromium</a> browser. Once installed, open the browser and visit <a href="http://flash.getchip.com">http://flash.getchip.com</a> and follow the instructions.</p>
+
+<p>If this is not appealing to you for whatever reason, then read on for instructions on repairing NAND directly from your computer.</p>
 
 <h2 id="for-ubuntu-14-4">For Ubuntu 14.4</h2>
 
@@ -2681,10 +2700,13 @@ Double-click on the application icon and follow the on-screen directions to comp
 
 <h2 id="why-composite-video">Why composite video?</h2>
 
-<p>Several reasons: 
-  * Televisions are the most commonly available screen in the world and the vast majority of them have a composite input. 
-  * Composite video can be integrated without adding licensing fees to the cost of C.H.I.P. 
-  * Composite is a very low profile connector, allowing us to keep the footprint of the board small for people wanting to build C.H.I.P. into projects.</p>
+<p>Several reasons:</p>
+
+<ul>
+<li>Televisions are the most commonly available screen in the world and the vast majority of them have a composite input.</li>
+<li>Composite video can be integrated without adding licensing fees to the cost of C.H.I.P.</li>
+<li>Composite is a very low profile connector, allowing us to keep the footprint of the board small for people wanting to build C.H.I.P. into projects.</li>
+</ul>
 
 <h2 id="is-chip-an-exposed-circuit-board">Is CHIP an exposed circuit board?</h2>
 
@@ -2814,7 +2836,7 @@ Double-click on the application icon and follow the on-screen directions to comp
 <pre class="highlight shell"><code>processor   : 0
 model name  : ARMv7 Processor rev 2 <span class="o">(</span>v7l<span class="o">)</span>
 BogoMIPS    : 1001.88
-Features    : half thumb fastmult vfp edsp neon vfpv3 tls vfpd32 
+Features    : half thumb fastmult vfp edsp neon vfpv3 tls vfpd32
 CPU implementer : 0x41
 CPU architecture: 7
 CPU variant : 0x3
