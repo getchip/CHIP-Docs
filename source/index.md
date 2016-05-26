@@ -13,6 +13,7 @@ includes:
   - using-derp.md
   - chip-hardware.md
   - making.md
+  - flash-in-browser.md
   - advanced.md
   - advanced-build-pd.md
   - advanced-headless.md
