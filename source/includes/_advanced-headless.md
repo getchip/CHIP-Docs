@@ -13,7 +13,7 @@ If you want to use CHIP without a monitor or keyboard attached, there's a few wa
   * Computer running OS X 10.10+, Ubuntu 14.04+, or Windows 7+
   * CHIP
   * Monitor and keyboard (somewhat optional, though handy)
-  * [Connection to the internet](#connecting-c-h-i-p-to-wi-fi-with-nmcli)
+  * [Connection to the network](#connecting-c-h-i-p-to-wi-fi-with-nmcli)
 
 ### SSH
 SSH (or "Secure Shell") is a common way to control a computer remotely over a network. You'll need to first get your computer's network name or IP address before you can connect.
@@ -174,7 +174,7 @@ With zero-conf properly configured, your CHIP can be contacted using a name, suc
   * CHIP
   * [SSH or serial connection to CHIP](#headless-chip) or
   * Monitor and keyboard
-  * [Connection to the internet](#connecting-c-h-i-p-to-wi-fi-with-nmcli)
+  * [Connection to a network](#connecting-c-h-i-p-to-wi-fi-with-nmcli)
 
 ### Install avahi
 Getting avahi running is extremely simple. First, install the avahi-daemon:
