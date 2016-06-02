@@ -31,7 +31,7 @@ Many keyboards have USB hubs built-in, so you can attach a mouse to the keyboard
 As you know, CHIP has built-in bluetooth. If you want to use a keyboard and mouse, you can keep your USB port free for other things (like mass storage or a MIDI controller!) and keep your desk clean. See [connecting to bluetooth section](#bluetooth)
 
 ## Monitor
-In the spirit of keeping things small, CHIP packs all the audio and video into a small TRRS (Tip-Ring-Ring-Sleeve) connector. Built-in video output is restricted to standard composite video resolution of 640x480. (Higher resolutions can be achieved with the upcoming VGA and DVI output accessories.)
+In the spirit of keeping things small, CHIP packs all the audio and video into a small TRRS (Tip-Ring-Ring-Sleeve) connector. Built-in video output is restricted to standard composite video resolution of 640x480. Higher video resolutions are possible using the [VGA and HMDI](https://getchip.com/pages/store) DIP boards.
 
 ![monitor connected to CHIP](images/chip_withmonitor.jpg)
 
