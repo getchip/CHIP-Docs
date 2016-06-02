@@ -929,10 +929,10 @@ If you are using CHIP OS, sound output is already configured and working. Howeve
 
 ### Requirements
   * CHIP
-  * A [SSH or serial connection to CHIP](#headless-chip) or
+  * [SSH or serial connection to CHIP](#headless-chip) or
   * Monitor and keyboard
   * Headphones or powered speakers connected to CHIP a/v jack
-  * A [Connection to the internet](#connecting-c-h-i-p-to-wi-fi-with-nmcli)
+  * [Connection to a network](#connecting-c-h-i-p-to-wi-fi-with-nmcli)
 
 ### Setup CHIP
 Update your apt repository list if you haven't done so recently:
