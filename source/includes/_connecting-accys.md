@@ -100,7 +100,7 @@ If the composite video connection is needed again, just reverse the process: des
 ### Microphone with Header Pins
 If you want to use the [pins 10 and 12 on header U14](#pin-headers), you'll most likely need to add some additional circuitry to get a good input signal. Here is a schematic of the simple circuit:
 
-![Schematic for adding a microphone input to MIC pins on CHIP](images/microphone-chip-schematic.jpg)
+![Schematic for adding a microphone input to MIC pins on CHIP](images/microphone_schematic.jpg)
 
 You'll need two 4.7 microfarad capacitors, one 100 nanofarad capacitor, and a 3300 picofarad capacitor. You'll also need one 2 kilo-ohm and one 4.3 kilo-ohm resistors.
 
