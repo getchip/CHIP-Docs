@@ -40,7 +40,7 @@ For the curious:
    * dialout: gives non-root access to serial connections 
    * plugdev: allows non-root mounting with pmount 
    
-For more information, check https://wiki.debian.org/SystemGroups
+For more information, check [the systems group page on debian.org](https://wiki.debian.org/SystemGroups).
 
 #### USB3 Issues
    * If you have any issues, try using a USB2 port and not a USB3 one, or try using a USB2 hub in your USB3 port and plug C.H.I.P. into that.
