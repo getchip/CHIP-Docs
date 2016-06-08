@@ -21,11 +21,12 @@ Unfortuantely, due to the nature of how Windows manages drivers, the flashing pr
 
 ## Linux-specific
 
-Linux requires permissions to write to C.H.I.P. when it's plugged into your computer. Chrome (or Chromium) does not have these permissions, so you need to explicitly create them before you'll be able to use the [web flasher](#flash-chip-with-an-os) .
+Linux requires permissions to write to C.H.I.P. when its plugged into your computer. Chrome (or Chromium) does not have these permissions, so you need to explicitly create them before you'll be able to use the [web flasher](#flash-chip-with-an-os) .
 
 ### On Ubuntu:
 
 You need to paste the following into a terminal:
+
 ```shell
 sudo usermod -a -G dialout $(logname)
 sudo usermod -a -G plugdev $(logname)
@@ -34,6 +35,7 @@ sudo usermod -a -G plugdev $(logname)
 Then logout and log back in. 
 
 For the curious:
+
    * logname: outputs your username 
    * dialout: gives non-root access to serial connections 
    * plugdev: allows non-root mounting with pmount 
@@ -42,12 +44,13 @@ For more information, check https://wiki.debian.org/SystemGroups
 
 #### USB3 Issues
    * If you have any issues, try using a USB2 port and not a USB3 one, or try using a USB2 hub in your USB3 port and plug C.H.I.P. into that.
-   * If you get stuck "Waiting for Fastboot" and the above options don't work, you should be able to install a "headless no fastboot" image. However, it will take quite a bit longer, and the Operating System won't have a GUI.
+   * If you get stuck "Waiting for Fastboot" and the above options do not work, you should be able to install a "headless no fastboot" image. However, it will take quite a bit longer, and the Operating System won't have a GUI.
 
 
 
 #### Caveat
 In rare cases, you may have an issue with your [computer](http://askubuntu.com/questions/185274/how-can-i-disable-usb-autosuspend-for-a-specific-device) putting C.H.I.P. into auto-suspend mode. Here is an example on how to fix this problem:
+
 ```shell
 apt-get install laptop-mode-tools
 ### edit /etc/laptop-mode/conf.d/runtime-pm.conf, uncomment/change AUTOSUSPEND_RUNTIME_DEVID_BLACKLIST
