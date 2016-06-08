@@ -18,6 +18,8 @@ Ok, good. Now that you have installed the browser, you can visit [flash.getchip.
 
 It's possible to run the entire operation online. There are also options for downloading the OS image to your harddrive, then flashing your CHIP with no additional need for internet access. 
 
+For more information on OS-specific issues, [see here](#web-flasher-os-specific-issues).
+
 ## The SDK Way
 
 You may not want to use the browser-based flashing procedure. If this is the case, or you need additional tools, you can flash using the [CHIP SDK](#flash-chip-firmware)
