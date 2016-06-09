@@ -54,6 +54,12 @@ GND : ground | LCD-DE : RGB666 data | GND : ground | GND : ground
 
 (*)The XIO GPIO pins are provided by an I2C Expander at address 0x38 on the TWI bus 2, as such, this address is not available on bus 2.
 
+## Mechanical Drawing
+
+![CHIP mechanical drawing](images/chip_mechanical.jpg)
+
+Our git repo for CHIP hardware has a [mechanical drawing](https://github.com/NextThingCo/CHIP-Hardware/blob/master/CHIP%5Bv1_0%5D/NTC_100088_CHIP_PCB_Assembly_drawing_r0.91.PDF)
+
 ## Open Source Hardware: Where To Get It
 CHIP is open source hardware. Here's where you can get all the data you need to make, modify, or learn about your own CHIP. Visit the [CHIP Hardware git repository](https://github.com/NextThingCo/CHIP-Hardware).
 
