@@ -4,7 +4,7 @@
    * You must install [drivers](https://s3-us-west-2.amazonaws.com/getchip.com/extension/drivers/windows/InstallDriver2.exe) to be able to talk with C.H.I.P.
    * Reboot after installing drivers on previous versions (<10) of Windows.
    
-Unfortuantely, due to the nature of how Windows manages drivers, the flashing procedure will likely fail the first time you use it. When that happens, try completely closing and reopening your browser. Depending on your version of windows, this might happen twice, once when waiting for FEL, and then again waiting for Fastboot.
+Unfortunately, due to the nature of how Windows manages drivers, the flashing procedure will likely fail the first time you use it. When that happens, try completely closing and reopening your browser. Depending on your version of windows, this might happen twice, once when waiting for FEL, and then again waiting for Fastboot.
 
 ### Troubleshooting
    * Try using a USB2 port (USB3 ports have issues).
@@ -30,6 +30,14 @@ You need to paste the following into a terminal:
 ```shell
 sudo usermod -a -G dialout $(logname)
 sudo usermod -a -G plugdev $(logname)
+
+# Create udev rules 
+echo -e 'SUBSYSTEM=="usb", ATTRS{idVendor}=="1f3a", ATTRS{idProduct}=="efe8", GROUP="plugdev", MODE="0660" SYMLINK+="usb-chip"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="18d1", ATTRS{idProduct}=="1010", GROUP="plugdev", MODE="0660" SYMLINK+="usb-chip-fastboot"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="1f3a", ATTRS{idProduct}=="1010", GROUP="plugdev", MODE="0660" SYMLINK+="usb-chip-fastboot"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="067b", ATTRS{idProduct}=="2303", GROUP="plugdev", MODE="0660" SYMLINK+="usb-serial-adapter"
+' | sudo tee /etc/udev/rules.d/99-allwinner.rules
+sudo udevadm control --reload-rules
 ```
 
 Then logout and log back in. 
@@ -40,6 +48,8 @@ For the curious:
    * dialout: gives non-root access to serial connections 
    * plugdev: allows non-root mounting with pmount 
    
+The udev rules then map the usb device to the groups.
+
 For more information, check [the systems group page on debian.org](https://wiki.debian.org/SystemGroups).
 
 #### USB3 Issues
