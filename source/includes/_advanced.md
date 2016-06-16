@@ -1162,7 +1162,10 @@ mount -a
 ```
 
 ## Connecting Bluetooth Devices
-CHIP has built-in Bluetooth. This tutorial instructs how to use a Bluetooth keyboard, since it is a simple and obvious example. There are, of course, several types of Bluetooth devices, such as earpieces, audio connectors, vacuum cleaners, and more. Future tutorials will cover those devices, but the keyboard is a good introduction to the commands and an easy way to test your system.
+CHIP has built-in Bluetooth and uses the [bluez 5 stack](http://www.bluez.org/) for implementing connections and devices. 
+This tutorial instructs how to use a Bluetooth keyboard, since it is a simple and obvious example. 
+There are, of course, several types of Bluetooth devices, such as earpieces, audio connectors, vacuum cleaners, and more. 
+Future tutorials (search our [bbs](http://bbs.nextthing.co) will cover those devices, but the keyboard is a good introduction to the commands and an easy way to test your system.
 
 ### Requirements
   * CHIP
@@ -1174,7 +1177,7 @@ CHIP has built-in Bluetooth. This tutorial instructs how to use a Bluetooth keyb
 Start with a CHIP completely unplugged and powered down. Add power and boot up. A known limitation is that after `reboot`, CHIP's Bluetooth controller may not work until you `power` and physically disconnect from a power source.
 
 ### About `bluetoothctl`
-We'll be using the command `bluetoothctl` to find, pair with, and connect to devices.
+We'll be using the command `bluetoothctl` to find, pair with, and connect to devices. 
 
 In the terminal, type
 
@@ -1190,7 +1193,8 @@ This starts up `bluetoothctl` in interactive mode. You should see output like
 [NEW] Device 15:03:26:A0:26:26 SK032B02-2626
 ```
 
-which is a list of MAC addresses of CHIP's Bluetooth controller chip (the first line) and any other devices that have been paired with CHIP in the past. Use the `help` command - it lists all the very useful commands in the `bluetoothctl` interactive mode.
+which is a list of MAC addresses of CHIP's Bluetooth controller chip (the first line) and any other devices that have been paired with CHIP in the past. 
+Use the `help` command - it lists all the very useful commands in the `bluetoothctl` interactive mode.
 
 In Bluetooth interactive mode, use the command
 
@@ -1322,6 +1326,21 @@ Attempting to connect to 15:03:26:A0:26:26
 [bluetooth]## [ 1304.470000] Bluetooth: HIDP (Human Interface Emulation) ver 1.2
 [ 1304.480000] Bluetooth: HIDP socket layer initialized
 Failed to connect: org.bluez.Error.Failed
+```
+
+### Trusting a Bluetooth Device
+Trust between people leads to understanding and perhaps even harmonious living. Trust between bluetooth devices means that you won't have to connect the device every time it's near. Which is a sort of harmony, I suppose. 
+Once you have connected a bluetooth device to CHIP, if you intend to use it again, you can trust it:
+
+```shell
+ trust 15:03:26:A0:26:26
+```
+
+### Remove a Bluetooth device 
+You may want CHIP to not pair or connect to a device - perhaps the conveniently trusted device needs to be freed for another connection. Whatever the reason, if you want to remove your Bluetooth device, 
+
+```shell
+ remove 15:03:26:A0:26:26
 ```
 
 ### Troubleshooting
