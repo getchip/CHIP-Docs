@@ -78,14 +78,18 @@ Then use the [`apt-get`](#apt-get) command to install the language packs and run
 ```shell
 sudo apt-get update && sudo apt-get install locales && sudo dpkg-reconfigure locales && sudo locale-gen
 ```
+
 You'll get a large menu to select locales. Use the arrow keys to scroll down and spacebar to mark your location with an [*]. It's advised that you choose the location marked `UTF8`. Others are somewhat arcane edge cases! Hit return to continue.
 
+![Setting locales in ncurses ui](images/screen_set_locales.jpg)
+
 You can set the timezone with 
+
 ```
 sudo dpkg-reconfigure tzdata
 ```
 
-![Orage Globaltime is used to set the time and date](images/screen_locales02.jpg)
+![Setting timezone in ncurses ui](images/screen_set_tzdata.jpg)
 
 ## Launching Installed Apps
 CHIP comes prepackaged with many open-source applications to get you started. It's easy to launch an application. 
