@@ -22,6 +22,33 @@ There are eight (8) GPIO pins always available for connecting CHIP to the sense-
 
 ![Pinout diagram for CHIP](images/chip_pinouts.jpg)
 
+### Kernel 4.3 vs 4.4 GPIO - How To Tell The Difference
+
+For various reasons related to the community nature of Linux development, the GPIO expander pin numbers are different between CHIP OS kernels 4.3 and 4.4. What follows is a very technical discussion of the GPIO access. If you just want to start making stuff and don't need low-level information, you might just want to skip this section and go straight to the [python library](#python-library).
+
+If you are developing applications on CHIP that use GPIO pins and you would like consistent behavior between the two kernel versions, you need to know how to find out the base value for the GPIO values. It may be enough for you to know that the GPIO expander pins start at *408* on 4.3 and *1016* on 4.4, however, it would be ideal to calculate this in your application to truly future-proof for future kernels.
+
+If you look in the directory `/sys/class/gpio`, you'll find two directories starting with `gpio`: `gpiochip0` and either `gpiochip408` (4.3) or `gpiochip1016` (4.4).
+
+The `408` and `1016` are the bases for the expander pins. If you want to definitively find out what the base is using code, you should 
+
+```shell
+cat gpiochip*/label
+cat gpiochip*/ngpio
+cat gpiochip*/base
+```
+
+The `label` you are interested in is the value `pcf8574a` which is the device that provides GPIO expansion. This provides the number of GPIO as returned by `ngpio`. The first expander pin starts with the `base` value. If you parse all these values and apply to your code, you can setup your application to be kernel-agnostic for GPIO access. 
+
+Here is a python script that demonstrates this [in a gist](https://gist.github.com/howientc/606545e0ff47e2cda61f14fca5c46eee)
+
+Here is a bash script to compute the base (courtesy of [bbs user @fordsfords](https://bbs.nextthing.co/users?name=fordsfords))
+
+```shell
+LABEL_FILE=`grep -l pcf8574a /sys/class/gpio/*/*label` BASE_FILE=`dirname $LABEL_FILE`/base 
+BASE=`cat $BASE_FILE`
+```
+ 
 ### How The System Sees GPIO
 There is a `sysfs` interface available for the GPIO. This just means you can access the GPIO states in a file-system-like manner. For example, you can reference XIO-P0 using this path:
 
@@ -76,7 +103,7 @@ When you are done experimenting, you can tell the system to stop listening to th
 You can learn more about GPIO and Linux [here:](https://www.kernel.org/doc/Documentation/gpio/sysfs.txt)
 
 ## Python Library
-A Python-based library for accessing GPIO data is in development. You can see some examples in use 
+There is a well-maintained python library that works for 4.3 and 4.4 kernels available [here](https://github.com/xtacocorex/CHIP_IO). This is analogous to the RPi.GPIO library, but is designed for CHIP. It's an excellent place for quickly working with GPIO and PWM on CHIP.
 
 ## GPIO Types
 There are many types of sensors that can be used with GPIO:
