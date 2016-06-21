@@ -99,9 +99,14 @@ Documentation on this process is forthcoming!
 Pin 9 on header U14 provides a link for low resolution analog to digital conversion (ADC). 
 There is no driver for this link yet. ADC is used to read continuous sensors (temperature, pots, FSR, photoresistor, etc)
 
-
 ## 1 Wire
-The 1 Wire serial protocol is not yet implemented for CHIP. 
+The 1 Wire serial protocol is not available in CHIP OS 4.3. In version 4.4 and above, you can access one wire data from the sysfs device. Find your one wire devices with
+
+```shell
+ls /sys/bus/w1/devices/2*/eeprom
+```
+
+The `*` is there because your eeprom device will register a unique UUID number with C.H.I.P., so the `ls` command will show you all available one wire devices.
 
 ## UART
 UART connections can be made using the UART connections on header U14. 
