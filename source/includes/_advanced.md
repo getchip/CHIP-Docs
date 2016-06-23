@@ -158,7 +158,7 @@ The original batch of CHIPs shipped with a software bug in the NAND flash storag
 #### Prepare CHIP for Flashing
 Prepare CHIP with a jumper wire connecting Pin 7 and Pin 39 on header U14 (FEL pin and GND). Here's a reference image that labels the headers and pins:
 
-![CHIP with jumper wire attached](images/uboot_jumper.jpg)
+![CHIP with jumper wire attached](images/uboot_fel_jumper.jpg)
 
 *Note: this jumper needs to be present only when you connect CHIP to power*. If for some reason the wire becomes disconnected after you have powered CHIP, there is no problem or need to panic.
 
