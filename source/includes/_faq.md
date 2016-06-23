@@ -83,7 +83,7 @@ No, but adding an RTC is a great (and easy) hardware hack, for the folks that ne
 ## What voltage are GPIOs?
 CHIP uses 3V3 digital logic on GPIOs.
 
-## What connector is use on the battery?
+## What connector is used on the battery?
 We are using a JST-2.0 PH 2-pin shrouded male connector to connect LiPo cells to C.H.I.P. In the current design there are also BATT pins available on the interconnect headers, which allow alternate battery connectors/placements when attaching C.H.I.P. to a custom PCBA.
 
 ## I want to know more about the Allwinner R8 processor!
