@@ -18,7 +18,6 @@ includes:
   - advanced.md
   - advanced-build-pd.md
   - advanced-headless.md
-  - repair.md
   - faq.md
   - trouble-faq
   - compliance.md
