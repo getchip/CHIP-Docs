@@ -26,7 +26,7 @@ You may not want to use the browser-based flashing procedure. If this is the cas
 
 ## Web Flasher OS-Specific Issues
 
-#### Before you try anything else, try using a different USB cable. Many cables are charging-only, or do not support high bandwidth and will cause flashing to fail.
+Before you try anything else, try using a different USB cable. Many cables are charging-only, or do not support high bandwidth and will cause flashing to fail.
 
 ### Windows-specific 
    * You must install [drivers](https://s3-us-west-2.amazonaws.com/getchip.com/extension/drivers/windows/InstallDriver2.exe) to be able to talk with C.H.I.P.
@@ -80,13 +80,13 @@ The udev rules then map the usb device to the groups.
 
 For more information, check [the systems group page on debian.org](https://wiki.debian.org/SystemGroups).
 
-##### USB3 Issues
+**USB3 Issues**
    * If you have any issues, try using a USB2 port and not a USB3 one, or try using a USB2 hub in your USB3 port and plug C.H.I.P. into that.
    * If you get stuck "Waiting for Fastboot" and the above options do not work, you should be able to install a "headless no fastboot" image. However, it will take quite a bit longer, and the Operating System won't have a GUI.
 
 
 
-##### Caveat
+**Caveat**
 In rare cases, you may have an issue with your [computer](http://askubuntu.com/questions/185274/how-can-i-disable-usb-autosuspend-for-a-specific-device) putting C.H.I.P. into auto-suspend mode. Here is an example on how to fix this problem:
 
 ```shell
