@@ -1,5 +1,7 @@
 # Web Flasher OS-Specific Issues
 
+### Before you try anything else, try using a different USB cable. Many cables are charging-only, or do not support high bandwidth and will cause flashing to fail.
+
 ## Windows-specific 
    * You must install [drivers](https://s3-us-west-2.amazonaws.com/getchip.com/extension/drivers/windows/InstallDriver2.exe) to be able to talk with C.H.I.P.
    * Reboot after installing drivers on previous versions (<10) of Windows.
