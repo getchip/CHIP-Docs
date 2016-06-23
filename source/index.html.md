@@ -14,7 +14,6 @@ includes:
   - chip-hardware.md
   - making.md
   - flash-in-browser.md
-  - web-flasher-os-specific.md
   - advanced.md
   - advanced-build-pd.md
   - advanced-headless.md
