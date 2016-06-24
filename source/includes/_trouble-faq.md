@@ -17,7 +17,7 @@
 
   *  Use a [powered USB hub](#powered-usb-hub)
   *  Use a [bluetooth keyboard and mouse](#bluetooth-keyboard-and-mouse). Yes, this is a very specific solution, but a good one when you are only using the USB port for keyboard and mouse. Keeps your desk cleaner too!
-  *  Execute the command `sudo axp209 --no_limit` in the terminal before you attach your USB peripherals.
+  *  Execute the command `sudo axp209 --no-limit` in the terminal before you attach your USB peripherals.
   *  Provide power from a supply connecting ground and 5V the pins [headers 1 and 2 on U13](#pin-headers).
 
 ***Problem:*** My CHIP booted fine until it got to loading the desktop GUI, then it shut down.
