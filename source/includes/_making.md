@@ -56,7 +56,7 @@ There is a `sysfs` interface available for the GPIO. This just means you can acc
   /sys/class/gpio/gpio408/
 ```
 
-The number is somewhat unfortunate, since the `sysfs` names do not match the labels on our diagram! But is not too hard to translate. PinsXIO-P0 to P7 linearly map to `gpio408` to `gpio415` on kernel 4.3 and `gpio1016` to `gpio1023` on kernel 4.4. See [above](#kernel-4-3-vs-4-4-gpio-how-to-tell-the-difference) to learn more about that distinction.
+The number is somewhat unfortunate, since the `sysfs` names do not match the labels on our diagram! But is not too hard to translate. Pins XIO-P0 to P7 linearly map to `gpio408` to `gpio415` on kernel 4.3 and `gpio1016` to `gpio1023` on kernel 4.4. See [above](#kernel-4-3-vs-4-4-gpio-how-to-tell-the-difference) to learn more about that distinction.
 
 ### Some GPIO Switch Action
 These lines of code will let us read values on pin XIO-P7. First, we tell the system we want to listen to this pin:
