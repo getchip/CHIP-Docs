@@ -4,11 +4,9 @@
 
 ***Problem:*** I attached a keyboard, monitor, and powered CHIP, but it does not do anything. The LEDs are on, but I can't do anything with CHIP!
 
-***Fixes:*** The initial batch of CHIPs shipped with a problem in their NAND flash storage. Don't worry, this is a software issue, and we've built a repair tool.
+***Fixes:*** Don't worry, your CHIP is probably fine. This can be fixed by reflashing CHIP from our web flasher.
 
-  * Download the repair tool.
-  * Double-click on the repair tool icon.
-  * Follow the onscreen messages to complete the repair process.
+  * Follow the instructions [for flashing your CHIP](#flash-chip-with-an-os).
 
 ## Sudden Shutdown (Brown-out)
 ***Problem:*** I attached a mouse and keyboard, and my CHIP suddenly turned off.

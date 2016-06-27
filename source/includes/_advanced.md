@@ -162,7 +162,7 @@ Prepare CHIP with a jumper wire connecting Pin 7 and Pin 39 on header U14 (FEL p
 
 *Note: this jumper needs to be present only when you connect CHIP to power*. If for some reason the wire becomes disconnected after you have powered CHIP, there is no problem or need to panic.
 
-Now connect CHIP to your computer with a [micro-USB](https://commons.wikimedia.org/wiki/File:Micro_USB.jpg)->USB-B cable. The power LED will illuminate.
+Now connect CHIP to your computer with a [micro-USB](https://commons.wikimedia.org/wiki/File:Micro_USB.jpg)->USB-A cable. The power LED will illuminate.
 
 #### Option 1: Flash With NTC Buildroot OS
 Buildroot is a lean operating system, and does not have a package manager to install software. You can add additional software before you flash CHIP by [customizing buildroot](#customize-buildroot). To flash CHIP with the buildroot OS:
