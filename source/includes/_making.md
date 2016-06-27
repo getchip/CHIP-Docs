@@ -56,38 +56,53 @@ There is a `sysfs` interface available for the GPIO. This just means you can acc
   /sys/class/gpio/gpio408/
 ```
 
-The number is somewhat unfortunate, since the `sysfs` names do not match the labels on our diagram! But is not too hard to translate. PinsXIO-P0 to P7 linearly map to gpio408 to gpio415.
+The number is somewhat unfortunate, since the `sysfs` names do not match the labels on our diagram! But is not too hard to translate. PinsXIO-P0 to P7 linearly map to `gpio408` to `gpio415` on kernel 4.3 and `gpio1016` to `gpio1023` on kernel 4.4. See [above](#kernel-4-3-vs-4-4-gpio-how-to-tell-the-difference) to learn more about that distinction.
 
 ### Some GPIO Switch Action
 These lines of code will let us read values on pin XIO-P7. First, we tell the system we want to listen to this pin:
 
 ```shell
+	#4.3
   sudo sh -c 'echo 415 > /sys/class/gpio/export'
+  #4.4
+  sudo sh -c 'echo 1023 > /sys/class/gpio/export'
 ```
 
 View the mode of the pin. It should return “in”:
 
 ```shell
+	#4.3
   cat /sys/class/gpio/gpio415/direction
+  #4.4
+  cat /sys/class/gpio/gpio1023/direction
 ```
 
 Connect a jumper wire between Pin 20 (XIO-P7) and Pin 39 (GND). Now use this line of code to read the value:
 
 ```shell
+	#4.3
   cat /sys/class/gpio/gpio415/value
+	#4.4
+  cat /sys/class/gpio/gpio1023/value
 ```
 
 ### Some GPIO Output
 You could also change the mode of a pin from “in” to “out”
 
 ```shell
+	#4.3
   sudo sh -c 'echo out > /sys/class/gpio/gpio415/direction'
+  #4.4
+  sudo sh -c 'echo out > /sys/class/gpio/gpio1023/direction'
 ```
 
 Now that it's in output mode, you can write a value to the pin:
 
 ```shell
+	#4.3
   sudo sh -c 'echo 1 > /sys/class/gpio/gpio415/value'
+  #4.4
+  sudo sh -c 'echo 1 > /sys/class/gpio/gpio1023/value'
 ```
 
 If you attach an LED to the pin and ground, the LED will illuminate according to your control messages.
@@ -96,7 +111,10 @@ If you attach an LED to the pin and ground, the LED will illuminate according to
 When you are done experimenting, you can tell the system to stop listening to the gpio pin:
 
 ```shell
+	#4.3
   sudo sh -c 'echo 415 > /sys/class/gpio/unexport'
+	#4.4
+  sudo sh -c 'echo 1023 > /sys/class/gpio/unexport'
 ```
 
 ### Learn More
