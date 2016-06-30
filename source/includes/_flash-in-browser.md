@@ -18,6 +18,15 @@ Ok, good. Now that you have installed the browser, you can visit [flash.getchip.
 
 It's possible to run the entire operation online. There are also options for downloading the OS image to your computer's harddrive, then flashing your CHIP with no additional need for internet access. 
 
+### FEL mode 
+Here is a photo (which may be clearer than the animation in the web flasher) which shows where to place your jumper wire or paper clip:
+
+![CHIP with jumper wire attached](images/uboot_fel_jumper.jpg)
+
+*Note: this jumper needs to be present only when you connect CHIP to power*. If for some reason the wire becomes disconnected after you have powered CHIP, there is no problem or need to panic.
+
+
+
 For more information on OS-specific issues, [see here](#web-flasher-os-specific-issues).
 
 ## The SDK Way
