@@ -1,4 +1,4 @@
-# Troubleshooting
+# Troubleshooting FAQ
 
 ## CHIP Won't Boot or Startup
 

@@ -69,7 +69,7 @@ vagrant ssh
 
 Congratulations! Now you're ready to Flash a C.H.I.P. from your SDK!
 
-### Troubleshooting
+### Troubleshooting Flashing from the SDK
 Here are a few possible problems.
 
 #### Shared Folder Out of Sync
@@ -655,7 +655,7 @@ You may want to prevent auto-connection to a network, so you can use this comman
 sudo nmcli connection delete id  (your wifi network name/SSID)
 ```
 
-#### Troubleshooting
+#### Troubleshooting Networks
 Here are a few possible problems with connections.
 
 ##### No network found
@@ -1343,7 +1343,7 @@ You may want CHIP to not pair or connect to a device - perhaps the conveniently 
  remove 15:03:26:A0:26:26
 ```
 
-### Troubleshooting
+### Troubleshooting Bluetooth
 If your Bluetooth controller module on CHIP is not functioning, you can easily find the problem. Type
 
 ```shell
@@ -1391,7 +1391,7 @@ It might take some time to download and install all the packages, since there ar
 
 Now you can use a mouse and keyboard to explore CHIP and launch programs.
 
-### Troubleshooting
+### Troubleshooting apt-get
 
 If you get errors from apt that report "unmet dependencies," you can run the command
 

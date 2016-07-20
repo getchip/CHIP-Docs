@@ -43,7 +43,7 @@ Before you try anything else, try using a different USB cable. Many cables are c
    
 Unfortunately, due to the nature of how Windows manages drivers, the flashing procedure will likely fail the first time you use it. When that happens, try completely closing and reopening your browser. Depending on your version of windows, this might happen twice, once when waiting for FEL, and then again waiting for Fastboot.
 
-#### Troubleshooting
+#### Troubleshooting The Web Flasher
    * Try using a USB2 port (USB3 ports have issues).
    * Try passing through a USB2 hub if using a USB3 port.
    * Try a different USB cable. They often are bad.

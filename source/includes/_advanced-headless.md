@@ -280,7 +280,7 @@ An alternative to just installing the avahi-daemon, you can
 
 which installs some other tools for network name propagation.
 
-### Troubleshooting
+### Troubleshooting SSH with avahi
 If your computer returns the error
 
 ```shell
