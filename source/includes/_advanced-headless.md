@@ -236,7 +236,7 @@ If you have more than one CHIP on the network, or you just want to change the na
 ```
   
 where you'll see a single word “chip.” Just modify that line (for example, change it to “bobofettywap”) and save the file. 
-You'll also need to modify the hosts file where you'll need to change the first line `127.0.0.1    chip` where you replace "chip" with your new username.
+You'll also need to modify the hosts file where you'll need to change the first line `127.0.0.1    chip` where you replace "chip" with your new hostname.
 
 ```shell
   sudo nano /etc/hosts
