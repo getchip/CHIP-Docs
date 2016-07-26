@@ -649,10 +649,23 @@ The command to disconnect from a wireless device needs a few parameters:
 sudo nmcli dev disconnect wlan0
 ```
 
-You may want to prevent auto-connection to a network, so you can use this command to "forget" a network:
+You may want to prevent auto-connection to a network, so you can use this process to "forget" a network. First, get the connection names:
 
 ```shell
-sudo nmcli connection delete id  (your wifi network name/SSID)
+nmcli c
+```
+
+which outputs something like
+
+```shell
+NAME       UUID                                  TYPE             DEVICE 
+NTC 2461   d0a6fb32-3ed8-4a95-a631-ee2ae6153761  802-11-wireless  wlan0
+```
+
+then, disconnect (using the example above)
+
+```shell
+sudo nmcli connection delete id "NTC 2461"
 ```
 
 #### Troubleshooting Networks
