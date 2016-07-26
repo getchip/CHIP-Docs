@@ -206,7 +206,7 @@ You can login to CHIP as `chip` or `root` using the password `chip`.
 and even test the hardware:
 
 ```shell
-  hwtest
+  sudo hwtest
 ```
 
 #### Customize Buildroot
