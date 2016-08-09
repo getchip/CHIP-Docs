@@ -108,8 +108,11 @@ AbiWord is a fully featured word processor. You can learn more at [The AbiWord w
 
 ![AbiWord can process words.](images/appscreen_abiword.jpg)
 
-### Ice Weasel Browser
-Ice Weasel is a Debian Linux version of the Firefox browser. The browser is largely the same as Firefox, just with a different name. More information is at the [Debian website](https://wiki.debian.org/Iceweasel) and in this [stack exchange thread](http://unix.stackexchange.com/questions/44215/is-there-any-advantage-of-using-iceweasel-and-firefox).
+### Web Browser
+CHIP OS ships with the Ice Weasel browser. It is a Debian Linux version of the Firefox browser. 
+The browser is largely the same as Firefox, just with a different name. 
+More information is at the [Debian website](https://wiki.debian.org/Iceweasel) and in this [stack exchange thread](http://unix.stackexchange.com/questions/44215/is-there-any-advantage-of-using-iceweasel-and-firefox).
+If you update your system (either through Synaptic or the command `apt-get update && apt-get upgrade`, you will suddenly find that your browser is called Firefox. This change is documented on the [debian wiki](https://wiki.debian.org/Iceweasel)
 
 ![Browse the web with IceWeasel](images/appscreen_webbrowser.jpg)
 

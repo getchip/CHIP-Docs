@@ -81,7 +81,7 @@ If you're a beginner, here's a quick reference of some really important and comm
 * **grep** a tool used for searching through files. It's quite deep and can be complicated, but if you see the word `grep` in some command, you know it's searching for a match.
 * **| (pipe)**  a command used to redirect data into an application.
 * **< (redirect)** a command use to redirect data into a file.
-* **cat** concactenate. used to append data to a file. Ex: `cat "Last line of text" > sometext.txt`. Merge files: `cat append.txt > main.txt` will put all the text in append.txt into main.txt.
+* **cat** and **echo** concactenate. append data to a file. Ex: `echo "Last line of text" >> sometext.txt`. Merge files: `cat append.txt >> main.txt` will put all the text in append.txt into main.txt. Overwrite: `echo "New contents of text file"  > whatevs.txt` will replace all text in the file with the text in quotes. Display text in file: `cat showit.txt` will print the contents in the terminal window. Create: `cat > new.txt` will let you create a new text file in the terminal by typing lines (ctl-c to exit).
 * **less** makes it so you can paginate and read a text tile. Ex: `less longtext.txt` will fill the screen with the first part of the longtext.txt file. Use the space bar to view the next page. Type `q` to exit.
 * **nano** a text editor. You'll often see commands that call `nano` so you can edit a configuration. Ex: `nano /etc/avahi/services/afpd.service` to edit the avahi Apple file service file.
 * **find** look for files in the filesystem. Ex: `find ~/Documents -name particular.txt -type f` will look for the file with the name `particular.txt` in the Documents directory.
