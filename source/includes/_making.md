@@ -154,7 +154,7 @@ ls /sys/bus/w1/devices/2*/eeprom
 The `*` is there because your eeprom device will register a unique UUID number with C.H.I.P., so the `ls` command will show you all available one wire devices.
 
 ## UART
-UART connections can be made using the UART connections on header U14. 
+UART connections can be made using the UART connections on header U14. There is more detail about connections and drivers in [another section](#usb-to-uart-serial-connection) of this document.
 
 ## PWM
 Pulse Width Modulation is used to control motors and other devices. 
