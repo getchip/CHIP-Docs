@@ -24,7 +24,8 @@ By default, connecting CHIP's micro USB to a computer will create a USB Serial c
 The 1/8" [TRRS connector](#about-the-trrs-connector) provides composite video and stereo audio output. Headphones can be plugged in for audio only.
 
 Audio Input uses the same connection on the TRRS connector as the composite video signal. If you want to make audio input active on the TRRS connector, you need to [cut a circuit board trace](#microphone-and-audio-input). This is not as permanent as it sounds, as it is easy to re-enable composite video out with a small amount of soldering.
-### Pin Headers
+
+## Pin Headers
 The Pin Headers provide a massive amount of connectivity, making CHIP a suitable platform for product development for physical computing and "internet of things" devices. Here's a basic diagram that labels all the pins:
 
 ![CHIP pinout](images/chip_pinouts.jpg)

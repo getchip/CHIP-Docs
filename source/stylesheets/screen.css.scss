@@ -448,25 +448,31 @@ html, body {
 
     th {
       padding: 5px 10px;
-      border-bottom: 1px solid #ccc;
       vertical-align: bottom;
+      border: 1px solid #ccc;
     }
 
     td {
       padding: 10px;
+      border: 1px solid #ccc;
     }
-
+    td:nth-child(odd) {
+      background-color: darken($main-bg,5%);
+    }
+    th:nth-child(odd) {
+      background-color: darken($main-bg,5%);
+    }
     tr:last-child {
       border-bottom: 1px solid #ccc;
     }
-
-    tr:nth-child(odd)>td {
-      background-color: lighten($main-bg,4.2%);
-    }
-
-    tr:nth-child(even)>td {
-      background-color: lighten($main-bg,2.4%);
-    }
+// 
+//     tr:nth-child(odd)>td {
+//       background-color: darken($main-bg,5%);
+//     }
+// 
+//     tr:nth-child(even)>td {
+//       background-color: lighten($main-bg,2.4%);
+//     }
   }
 
   dt {
