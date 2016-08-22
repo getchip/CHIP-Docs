@@ -40,7 +40,7 @@ Here's what the other end of the cable looks like, attached to a monitor with st
 ![monitor connected to CHIP](images/chip_withmonitor_cnxn.jpg)
 
 ### About the TRRS Connector
-CHIP comes with a 1/8" (3.5mm) Tip-Ring-Ring-Sleeve (TRRS) jack, capable of carrying stereo audio, and either composite video out, or microphone in.
+CHIP has a 1/8" (3.5mm) Tip-Ring-Ring-Sleeve (TRRS) output jack, capable of carrying stereo audio, and either composite video out, or microphone in.
 
 ![Typical AV cable that carries stereo audio and composite video](images/avcable.jpg)
 
