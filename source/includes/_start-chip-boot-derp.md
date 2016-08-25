@@ -24,11 +24,10 @@ The JST can only plug it in one way: if you are having a hard time lining things
 
 What's really great is that if you plug in to a charger and plug in a battery, the battery will charge - all the power management is on CHIP itself. Roughly, it takes about four to six hours to charge a 3000 mAh LiPo battery from a 5V 1A power source. Also, our delightful little Power Management IC, the AXP209, handles pass-through power, so while on and charging a battery, CHIP is basically running on a un-interruped power supply -- If charge power fails, CHIP seamlessly switches onto battery power without shutting off.
 
-## Connect to it
-You can [connect chip to a screen, keyboard and mouse](#recommended-accessories), or you can [connect it to another computer and remote into it](http://docs.getchip.com/chip.html#headless-chip).
+Now you're ready to [connect CHIP to a screen, keyboard and mouse](#recommended-accessories) or even work on CHIP from [another computer](#headless-chip).
 
 ## Connect To WiFi
-Connecting to a WiFi network is easy using the WiFi icon the top right system tray. Just select a network to initiate a connection. If the network requires a password you’ll be prompted for it. You can also [set up Wi-Fi from the CLI](#wifi-connection).
+Connecting to a WiFi network is easy using the WiFi icon the top right system tray. Just select a network to initiate a connection. If the network requires a password you’ll be prompted for it. You can also [set up Wi-Fi from the command line](#wifi-connection).
 
 ![Select a wireless connection access point](images/screen_wifisettings.jpg)
 
