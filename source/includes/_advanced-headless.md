@@ -10,16 +10,26 @@ If you want to use CHIP without a monitor or keyboard attached, there's a few wa
   * Secure Shell (SSH) over wireless or wired ethernet
 
 ### Requirements
-  * Computer running OS X 10.10+, Ubuntu 14.04+, or Windows 7+
+  * Computer running OS X 10.10+, Ubuntu 14.04+ (or most Linux), or Windows 7+
   * CHIP
   * Monitor and keyboard (somewhat optional, though handy)
-  * [Connection to the network](#connecting-c-h-i-p-to-wi-fi-with-nmcli)
 
-### SSH
-SSH (or "Secure Shell") is a common way to control a computer remotely over a network. You'll need to first get your computer's network name or IP address before you can connect.
+There are multiple ways to connect to a headless CHIP:
+  * Connecting CHIP and your machine to the same network and SSH into it (simplest once both are on same network).
+  * Using micro-USB and connecting via remote serial console.
+  * Using a USB-to-UART device and connecting via remote serial console.
 
-#### How to get your IP address.
-The easiest way to get CHIPs IP address is to hook up a monitor and keyboard. Bootup, log in, [connect to the network](#connecting-c-h-i-p-to-wi-fi-with-nmcli) if you need to, and use the command
+### Via SSH
+SSH (or "Secure Shell") is a common way to control a computer remotely over a network. You'll need to first get CHIP to connect to your network, either by somehow setting up Wi-Fi on your CHIP or by using a USB-to-Ethernet cable.
+
+#### How to get CHIP's IP address
+CHIP runs by default Avahi which means you can likely just connect by running in a shell:
+
+```shell
+ssh chip@chip
+```
+
+Else, the easiest way to get CHIPs IP address is to hook up a monitor and keyboard. Bootup, log in, [connect to the network](#connecting-c-h-i-p-to-wi-fi-with-nmcli) if you need to, and use the command:
 
 ```shell
 hostname -i
@@ -43,14 +53,13 @@ which will output a lot of data. Look for the line `wlan0` and the entry `inet`,
 inet 10.1.1.99
 ```
 
-#### Connect to CHIP over a network
 Now that you know your IP address, use the command:
 
 ```shell
 ssh root@10.1.1.99
 ```
 
-You'll be asked for CHIP's password. The default password is `chip`.
+You'll be asked for **CHIP's password**. The default password is `chip`.
 This process is the same if CHIP is connected to the network using built-in wireless or a USB-Ethernet adapter.
 
 #### Make Connections To CHIP Easy
@@ -60,7 +69,7 @@ Alternatively, you can [setup zero configuration networking](#zero-configuration
 
 You are now free to do whatever it is you do with Linux command line on CHIP.
 
-### USB to UART Serial Connection
+### Via the Serial Console
 There are a few reasons you'd want to use a serial connection:
 
   * No wireless network
@@ -68,27 +77,21 @@ There are a few reasons you'd want to use a serial connection:
   * Don't know the IP or network name of CHIP
   * You're old-school and like it
 
-Connect a USB to UART cable to the Ground (GND), Transmit (TX), and Recieve (RX) pins on CHIP
+#### Setting Up the Serial Connection
+You can just connect to CHIP with a USB cable from your computer to the micro-USB on CHIP. Your computer should see CHIP as a serial device as well as provide power for it. You can then use the serial connection to remote into it with the directions below.
+
+##### Using a USB-to-UART
+Alternatively you can use a USB-to-UART cable (any will do). Here's the [one we bought](http://www.amazon.com/Armorview-PL2303HX-RS232-Module-Converter/dp/B008AGDTA4). Most of them will have a USB A plug for your computer on one end and four wires (red, green, black, and white) with female header pins on the other.
+
+You may find other USB-UART cables that have more wires. There will be some labels that will help you connect to the correct pins (GND, TX, RX) on terminal U14.
+Just be sure to check your datasheets to make sure you're using the correct pins.
 
 We'll find those on header U14, pin outs 1,3 and 5.
 See the following diagram, which assumes CHIP's USB ports are pointed up...
 
 ![Pinout diagram for CHIP](images/chip_pinouts.jpg)
 
-#### About the Cable
-If you need a connector, search your favorite shop for 'USB to UART cable' - any will do.
-
-Here's the [one we bought](http://www.amazon.com/Armorview-PL2303HX-RS232-Module-Converter/dp/B008AGDTA4). Most of them will have a USB A plug for your computer on one end and four wires (red, green, black, and white) with female header pins on the other.
-
-You may find other USB-UART cables that have more wires. There will be some labels that will help you connect to the correct pins (GND, TX, RX) on terminal U14.
-Just be sure to check your datasheets to make sure you're using the correct pins.
-
-#### Install the driver
-For this tutorial, we are using a PL2303 USB to Serial cable. 
-If you are using this one too, you'll probably need to [install the PL2303 driver](http://www.prolific.com.tw/US/ShowProduct.aspx?pcid=41&showlevel=0041-0041) for your computer.
-
-#### Connect the Cable
-You only need to worry about three of the wires:
+You only need to worry about three of the wires. Connect a USB-to-UART cable to the Ground (GND), Transmit (TX), and Recieve (RX) pins on CHIP:
 
   * Black = Ground (GND)
   * White = Transmit (TX)
@@ -105,13 +108,12 @@ This is what our cable looks like plugged in:
 
 ![Properly connect USB to UART cable](images/uart_connection.jpg)
 
-### USB On The Go Serial Connection
+#### Install the driver
+For this tutorial, we are using a PL2303 USB to Serial cable. 
+If you are using this one too, you'll probably need to [install the PL2303 driver](http://www.prolific.com.tw/US/ShowProduct.aspx?pcid=41&showlevel=0041-0041) for your computer.
 
-Simpler than the UART cable, you can connect to CHIP with a USB cable to your computer. Your computer will see CHIP as a serial device as well as provide power to the CHIP. Either way, you'll be able to continue with the directions below.
-
-### Control CHIP Using a Serial Terminal
-
-Once you've connected CHIP to your computer with the UART or USB cable, open up a terminal. There's lots out there. Here's a few:
+#### Remote Into CHIP Using a Serial Terminal
+Once you've connected CHIP to your computer with the UART or USB cable, open up a terminal on your computer. There are many application that can use a serial terminal. Here's a few:
 
   * OS X: [Zterm](http://www.dalverson.com/zterm/), `screen` (built-in to OS X terminal)
   * Windows: [PuTTy](http://www.chipkin.com/using-putty-for-serial-com-connections-hyperterminal-replacement/) or [cygwin](https://cygwin.com)
