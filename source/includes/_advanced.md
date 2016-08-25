@@ -530,10 +530,10 @@ cd CHIP-tools
 ```
 
 ## WiFi Connection
-Below are detailed instructions for connecting to Wi-Fi networks using two different command line protocols: `nmcli` and `connman`. If you are using the CHIP OS that comes installed on CHIP, or you have flashed with our Debian distribution, you'll want to use the first section about connecting with `nmcli`. If you have flashed CHIP with our buildroot OS, you'll need to use `connman`.
+Below are detailed instructions for connecting to Wi-Fi networks using two different command line protocols: `nmtui`/`nmcli` and `connman`. If you are using the CHIP OS that comes installed on CHIP, or you have flashed with our Debian distribution, you'll want to use the first section about connecting with `nmcli`. If you have flashed CHIP with our buildroot OS, you'll need to use `connman`.
 
-### Connecting C.H.I.P. to Wi-Fi with nmcli
-There are several tools in Linux for connecting and configuring networks. We will be using the command nmcli (Network Manager Client). You may see other tutorials that reference iw or iwconfig, however, these tools are not recommended for C.H.I.P. You can read more about nmcli on the internet.
+### Connecting C.H.I.P. to Wi-Fi with network-manager
+There are several tools in Linux for connecting and configuring networks. We will be using the command nmcli (Network Manager Client). You may see other tutorials that reference iw or iwconfig, however, these tools are not recommended for C.H.I.P. You can read more about `nmtui` and `nmcli` on the internet.
 
 #### Requirements
 You will need one of these scenarios:
@@ -542,6 +542,11 @@ You will need one of these scenarios:
   * [SSH or serial](#headless-chip) connection
   * Wireless access to internet
   * CHIP loaded with CHIP OS or Debian
+
+#### Using nmtui
+Run `nmtui` and use the terminal user interface to add/edit your Wi-Fi connections. This is probably the simplest.
+
+Below are the detailed setup using `nmcli` (both as part of the `network-manager` package that should be pre-installed).
 
 #### Step 1: List available Wi-Fi networks
 In the terminal, type
