@@ -1,64 +1,27 @@
 ## Headless CHIP 
-One of the most amazing features of CHIP is that it's insanely simple to use it as small, wireless computer. Low power requirements, battery powered with charge management, and both WiFi and Bluetooth connectivity makes CHIP easy to run as a headless, autonomous machine. 
+One of the most amazing features of CHIP is that it's insanely simple to use it as small, wireless computer. Low power requirements, battery-powered with charge management, and both WiFi and Bluetooth connectivity makes CHIP easy to run as a headless, autonomous machine.
 Of course, you'll still want to access it and control it without a monitor or keyboard. You can control CHIP with another computer and a serial or network connection. Here's how you do this.
 
 ### Begin
 If you want to use CHIP without a monitor or keyboard attached, there's a few ways to do this:
 
-  * Serial connection with USB to UART cable
-  * Serial connection with USB cable
+  * Serial connection between a computer and CHIP with a micro-USB cable (USB OTG)
+  * Serial connection between a computer and CHIP with USB to UART cable
   * Secure Shell (SSH) over wireless or wired ethernet
 
+
 ### Requirements
+
   * Computer running OS X 10.10+, Ubuntu 14.04+, or Windows 7+
   * CHIP
-  * Monitor and keyboard (somewhat optional, though handy)
-  * [Connection to the network](#connecting-c-h-i-p-to-wi-fi-with-nmcli)
+  * Micro-USB cable for USB OTG
+  * USB-UART cable for USB serial
+  * A [network connection](#connecting-c-h-i-p-to-wi-fi-with-nmcli) for SSH
 
-### SSH
-SSH (or "Secure Shell") is a common way to control a computer remotely over a network. You'll need to first get your computer's network name or IP address before you can connect.
+### USB On-The-Go Serial Connection
 
-#### How to get your IP address.
-The easiest way to get CHIPs IP address is to hook up a monitor and keyboard. Bootup, log in, [connect to the network](#connecting-c-h-i-p-to-wi-fi-with-nmcli) if you need to, and use the command
+Possibly the simplest method to connect to a CHIP is with USB OTG (On-The-Go) Serial. You can connect to CHIP with a micro-USB cable to your computer. Your computer will see CHIP as a serial device as well as provide power to the CHIP. Once you've connected the USB cable to CHIP and your computer, you can read how to [control CHIP using a serial terminal](#control-chip-using-a-serial-terminal)
 
-```shell
-hostname -i
-```
-
-which results in your IP address, which might look like this:
-
-```shell
-10.1.1.99
-```
-
-If the `hostname -i` command doesn't work you can use
-
-```shell
-ip addr show dev wlan0
-```
-
-which will output a lot of data. Look for the line `wlan0` and the entry `inet`, something like:
-
-```shell
-inet 10.1.1.99
-```
-
-#### Connect to CHIP over a network
-Now that you know your IP address, use the command:
-
-```shell
-ssh root@10.1.1.99
-```
-
-You'll be asked for CHIP's password. The default password is `chip`.
-This process is the same if CHIP is connected to the network using built-in wireless or a USB-Ethernet adapter.
-
-#### Make Connections To CHIP Easy
-You may want to setup your network so it will always provide the same (static) IP address to CHIP. You can then rely on CHIP always having the same IP address. 
-
-Alternatively, you can [setup zero configuration networking](#zero-configuration-networking) to give your CHIP an easily remembered name. 
-
-You are now free to do whatever it is you do with Linux command line on CHIP.
 
 ### USB to UART Serial Connection
 There are a few reasons you'd want to use a serial connection:
@@ -67,6 +30,7 @@ There are a few reasons you'd want to use a serial connection:
   * No USB-ethernet cable
   * Don't know the IP or network name of CHIP
   * You're old-school and like it
+  * You need to see terminal output from the beginning of boot
 
 Connect a USB to UART cable to the Ground (GND), Transmit (TX), and Recieve (RX) pins on CHIP
 
@@ -101,13 +65,68 @@ Plugging in a +5 V pin could damage your CHIP
 Again, there is a chance your USB to UART cable may be different.
 Please check your data sheets!
 
-This is what our cable looks like plugged in:
+The correct pins are on U14 at 1, 3, and 5.
+
+![Pinout diagram for CHIP](images/chip_pinouts.jpg)
+
+ Here's a photo of the cable properly plugged in:
 
 ![Properly connect USB to UART cable](images/uart_connection.jpg)
 
-### USB On The Go Serial Connection
 
-Simpler than the UART cable, you can connect to CHIP with a USB cable to your computer. Your computer will see CHIP as a serial device as well as provide power to the CHIP. Either way, you'll be able to continue with the directions below.
+### SSH
+SSH (or "Secure Shell") is a common way to control a computer remotely over a network. You'll need to first get your computer's network name or IP address before you can connect.
+
+#### Connect to CHIP over a network
+CHIP comes with `avahi` installed, meaning you can simply refer to it with a name, rather than an IP address
+
+```shell
+ssh chip@chip.local
+```
+
+In some situations, you'll need to use CHIP's [IP address](#how-to-get-your-ip-address) to connect, in which case the command would look like: 
+
+```shell
+ssh chip@10.1.1.99
+```
+
+You'll be asked for CHIP's password. The default password is `chip`.
+This process is the same if CHIP is connected to the network using built-in wireless or a USB-Ethernet adapter.
+
+
+##### How to get your IP address
+The easiest way to get CHIPs IP address is to hook up a monitor and keyboard. Bootup, log in, [connect to the network](#connecting-c-h-i-p-to-wi-fi-with-nmcli) if you need to, and use the command
+
+```shell
+hostname -i
+```
+
+which results in your IP address, which might look like this:
+
+```shell
+10.1.1.99
+```
+
+If the `hostname -i` command doesn't work you can use
+
+```shell
+ip addr show dev wlan0
+```
+
+(You can use the abbreviated `ip a` for an easy to remember command).
+
+which will output a lot of data. Look for the line `wlan0` and the entry `inet`, something like:
+
+```shell
+inet 10.1.1.99
+```
+
+#### Make Connections To CHIP Easy
+You may want to setup your network so it will always provide the same (static) IP address to CHIP. You can then rely on CHIP always having the same IP address. 
+
+Alternatively, you can [setup zero configuration networking](#zero-configuration-networking) to give your CHIP an easily remembered name. 
+
+You are now free to do whatever it is you do with Linux command line on CHIP.
 
 ### Control CHIP Using a Serial Terminal
 
@@ -148,7 +167,7 @@ to list the serial devices.
 
 Now power up CHIP. You could do this at anytime, but you'll have the most reliable experience powering CHIP after connecting the USB-UART wires. If you make the serial connection after booting chip, you'll probably need to hit 'return' on your keyboard a few times to get CHIP to send some data to you and print in your terminal.
 
-You'll then be prompted for login. Defaults are username `root` and password `chip`.
+You'll then be prompted for login. Defaults are username `chip` and password `chip`.
 
 You are now free to do whatever it is you do with Linux command line on CHIP.
 
@@ -250,7 +269,7 @@ Finally, to get this new name to broadcast over the network restart avahi-daemon
 You can now access chip with the new name:
 
 ```shell
-  ssh root@bobofettywap.local 
+  ssh chip@bobofettywap.local 
 ```
 
 ### Other packages
