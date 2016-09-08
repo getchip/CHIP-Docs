@@ -22,6 +22,8 @@ CHIP can also be battery powered. Specifically, any single cell (1S) 3.7V Lithiu
 
 The JST can only plug it in one way: if you are having a hard time lining things up, turn it around! Needless to say, do not force the battery connector into the socket if something doesn't feel right!
 
+If you have added a connector to your own battery, make sure you have the JST wired correctly: the (-) connection should be on the **outside** edge of CHIP.
+
 What's really great is that if you plug in to a charger and plug in a battery, the battery will charge - all the power management is on CHIP itself. Roughly, it takes about four to six hours to charge a 3000 mAh LiPo battery from a 5V 1A power source. Also, our delightful little Power Management IC, the AXP209, handles pass-through power, so while on and charging a battery, CHIP is basically running on a un-interruped power supply -- If charge power fails, CHIP seamlessly switches onto battery power without shutting off.
 
 Now you're ready to [connect CHIP to a screen, keyboard and mouse](#recommended-accessories) or even work on CHIP from [another computer](#headless-chip).

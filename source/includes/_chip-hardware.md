@@ -1,5 +1,5 @@
 # CHIP Hardware
-CHIP is small, but it packs a lot of hardware on the PCB. Here's an overview of the connections and components.
+At around 30 grams, CHIP is small, but it packs a lot of hardware on the PCB. Here's an overview of the connections and components.
 
 ## Parts and Pieces
 ![Callout graphic of chip parts on top](images/chip_top_annotated.jpg)
