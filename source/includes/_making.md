@@ -154,7 +154,49 @@ ls /sys/bus/w1/devices/2*/eeprom
 The `*` is there because your eeprom device will register a unique UUID number with C.H.I.P., so the `ls` command will show you all available one wire devices.
 
 ## UART
-[UART](https://en.wikipedia.org/wiki/Universal_asynchronous_receiver/transmitter) connections can be made using the UART connections on header U14. There is more detail about connections and drivers in [another section](#usb-to-uart-serial-connection) of this document.
+[UART](https://en.wikipedia.org/wiki/Universal_asynchronous_receiver/transmitter) connections can be made using the UART connections on header U14. It allows serial connection which can be used to:
+
+ * Connect from another machine to [CHIP via remote serial console](#usb-to-uart-serial-connection)
+ * Use CHIP to connect to a microcontroller or other peripheral which has a serial interface (see below).
+
+### Serial connection to a microcontroller or other peripheral
+
+First stop *Getty* to avoid most shell stdin/stdout to interfere with UART. Yes most, saddly kernel messages will still go though and there is currently no way to stop them (and they may happen from time to time after boot):
+
+    $ sudo systemctl stop serial-getty@ttyS0.service
+    
+You may even disable completely that service so that it remains off after reboot but then you won't be able to use the serial console:
+
+    $ sudo systemctl mask serial-getty@ttyS0.service
+
+You can then use UART as a standard serial port from `/dev/ttyS0`. Below is a little sample experiment to test your UART port:
+
+#### Example usage
+
+Connect UART Tx to Rx directly via a cable. So all outputs will come as inputs.
+
+Install PySerial (we'll have to run our process as `root` to get access to the port):
+
+    $ sudo pip install pyserial
+
+Write this little script and save it for example as `test.py`:
+
+    import serial
+    import time
+    with serial.Serial('/dev/ttyS0') as ser:
+    for i in range(10):
+        ser.write([i])
+        print(bytearray(ser.read())[0])
+        time.sleep(1)
+        
+Finally let's run it:
+
+    $ sudo python test.py
+    1
+    2
+    3
+    ...
+    99
 
 ## PWM
 [Pulse Width Modulation](https://en.wikipedia.org/wiki/Pulse-width_modulation) can be used to control
