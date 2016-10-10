@@ -10,6 +10,7 @@ Like desktop computers from Best Buy, you may find that certain accessories will
   * Monitor with a composite video input
   * USB cable: USB-A to microUSB-B
   * TRRS to RCA connector
+  * 2A, 5V USB power supply
   
 Additionally, some of the advanced tutorials require:
 
