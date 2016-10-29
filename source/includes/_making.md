@@ -180,7 +180,8 @@ Install PySerial (we'll have to run our process as `root` to get access to the p
     $ sudo pip install pyserial
 
 Write this little script and save it for example as `test.py`:
-```
+
+```python
     import serial
     import time
     with serial.Serial('/dev/ttyS0') as ser:
@@ -191,6 +192,7 @@ Write this little script and save it for example as `test.py`:
 ```
 
 Finally let's run it:
+
 ```shell
     $ sudo python test.py
     1
