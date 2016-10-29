@@ -180,7 +180,7 @@ Install PySerial (we'll have to run our process as `root` to get access to the p
     $ sudo pip install pyserial
 
 Write this little script and save it for example as `test.py`:
-
+```
     import serial
     import time
     with serial.Serial('/dev/ttyS0') as ser:
@@ -188,15 +188,17 @@ Write this little script and save it for example as `test.py`:
         ser.write([i])
         print(bytearray(ser.read())[0])
         time.sleep(1)
-        
-Finally let's run it:
+```
 
+Finally let's run it:
+```shell
     $ sudo python test.py
     1
     2
     3
     ...
     99
+```
 
 ## PWM
 [Pulse Width Modulation](https://en.wikipedia.org/wiki/Pulse-width_modulation) can be used to control
