@@ -235,6 +235,30 @@ This will take a while, maybe an hour. When finished, flash CHIP with the script
 
 Unless you changed the users or passwords, you can login to CHIP as `chip` or `root` using the password `chip`.
 
+##### Buildroot Cheat Sheet
+
+Here's a very terse explanation of how the make commands work in CHIP-buildroot:
+
+```shell
+CHIP-buildroot/
+├── make chip_defconfig
+│   ├── apply pre-existing chip-specific configuration to buildroot
+│   └── apply pre-existing chip-specific configuration to kernel
+├── make chippro_defconfig
+│   ├── apply pre-existing chippro-specific configuration to buildroot
+│   └── apply pre-existing chippro-specific configuration to kernel
+├── make linux_nconfig
+│   └── make realtime changes to currently applied kernel defconfig
+└── make nconfig
+    └── make realtime changes to currently applied buildroot defconfig
+```
+
+The `defconfig` is a sort of macro that loads a suggested starting point for a buildroot OS, for packages (nconfig) and kernel (linux-nconfig).
+
+Use `make nconfig` to add packages for extending the capabilities, like you might with a package manager in debian.
+
+The `make linux_nconfig` command modifies the kernel for specific drivers or hardware additions.
+
 ### Appendix
 Sample outputs are provided in this appendix so you can more easily troubleshoot or proceed with confidence when flashing CHIP with firmware.
 
