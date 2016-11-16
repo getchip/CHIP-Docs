@@ -1,5 +1,21 @@
+## Install the latest PureData
+
+The latest versions of PureData can be installed via apt-get. Use these commands (or put them in a script). This adds a repository source to your apt sources, updates apt-get, then installs puredata and all the dependencies.
+
+```
+#!/bin/bash
+echo "deb http://ftp.de.debian.org/debian stretch main" | sudo tee --append /etc/apt/sources.list
+sudo apt-get update
+sudo apt-get install -y puredata
+echo "@audio - rtprio 99" | sudo tee --append /etc/security/limits.conf
+echo "@audio - memlock unlimited" | sudo tee --append /etc/security/limits.conf
+WHO=$USER
+sudo adduser $WHO audio
+```
+
 ## Building and Installing PureData (PD) on CHIP
 
+If you want to build from source, these instructions will take you there.
 PureData is a graphical programming environment, primarily for making audio and multimedia applications. This tutorial describes how to build the "vanilla" version of PD. This is a very rudimentary version of PD - it does not compile or build the extras objects, such as "bob~" or "expr~".
 
 ### Get Source
