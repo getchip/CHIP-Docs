@@ -22,6 +22,9 @@ There are eight (8) GPIO pins always available for connecting CHIP to the sense-
 
 ![Pinout diagram for CHIP](images/chip_pinouts.jpg)
 
+### GPIO Library
+There is an excellent library for working with GPIO and CHIP's IO busses, made available by our wonderful community. Check out the [Adafruit_Python_GPIO](https://github.com/xtacocorex/Adafruit_Python_GPIO) and the [CHIP_IO](https://github.com/xtacocorex/CHIP_IO) libraries. These make it very easy to get started with making things with CHIP.
+
 ### Kernel 4.3 vs 4.4 GPIO - How To Tell The Difference
 
 For various reasons related to the community nature of Linux development, the GPIO expander pin numbers are different between CHIP OS kernels 4.3 and 4.4. What follows is a very technical discussion of the GPIO access. If you just want to start making stuff and don't need low-level information, you might just want to skip this section and go straight to the [python library](#python-library).
@@ -138,7 +141,22 @@ Relays are special hardware bridges used to switch higher voltage electronics, p
 ## Expanding GPIO
 If you don't need to drive an LCD, you can use those pins for more, faster GPIO if you want to. 
 These are the pins numbered 18-40 on U13 and 27-40 on U14 to act as GPIO to increase the number of available GPIO pins. 
-Documentation on this process is forthcoming!
+
+### Finding GPIO Pin Names
+The process for reading the pins using sysfs are the same as the [documentation above](#some-gpio-switch-action). You can calculate the Pin name using the [Allwinner R8 Datasheet](https://github.com/NextThingCo/CHIP-Hardware/blob/master/CHIP%5Bv1_0%5D/CHIPv1_0-BOM-Datasheets/Allwinner%20R8%20Datasheet%20V1.2.pdf), starting on page 18. 
+
+The letter index is a multiple of 32 (where A=0), and the number is an offset. For example PD4 is `LCD_D4` so
+
+```
+D=3
+(32*3)+4 = 100
+```
+
+Therefore, listening to LCD_D4 in sysfs would begin with
+
+```
+sudo sh -c 'echo 415 > /sys/class/gpio/export'
+```
 
 ## Analog to Digital Conversion
 Pin 9 on header U14 provides a link for low resolution analog to digital conversion (ADC). 
