@@ -528,9 +528,10 @@ git pull
 ```
 
 You'll also need to add your user to some groups and add a udev rule
+
 ```shell
-sudo usermod -a -G dialout $(logname) &&
-sudo usermod -a -G plugdev $(logname) &&
+sudo usermod -a -G dialout $LOGNAME &&
+sudo usermod -a -G plugdev $LOGNAME &&
 'SUBSYSTEM=="usb", ATTRS{idVendor}=="1f3a", ATTRS{idProduct}=="efe8", GROUP="plugdev", MODE="0660" SYMLINK+="usb-chip" SUBSYSTEM=="usb", ATTRS{idVendor}=="18d1", ATTRS{idProduct}=="1010", GROUP="plugdev", MODE="0660" SYMLINK+="usb-chip-fastboot" SUBSYSTEM=="usb", ATTRS{idVendor}=="1f3a", ATTRS{idProduct}=="1010", GROUP="plugdev", MODE="0660" SYMLINK+="usb-chip-fastboot" SUBSYSTEM=="usb", ATTRS{idVendor}=="067b", ATTRS{idProduct}=="2303", GROUP="plugdev", MODE="0660" SYMLINK+="usb-serial-adapter"' | sudo tee /etc/udev/rules.d/99-allwinner.rules &&
 sudo udevadm control --reload-rules
 ```
