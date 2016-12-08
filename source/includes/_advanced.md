@@ -541,6 +541,8 @@ SUBSYSTEM=="usb", ATTRS{idVendor}=="067b", ATTRS{idProduct}=="2303", GROUP="plug
 
 Now you are ready to [flash CHIP](#flash-chip-firmware) with firmware.
 
+Note, if you are using openSUSE, you have to change the GROUP to 'lp'.
+
 #### All The Commands At Once
 Here's all the commands in one place:
 
