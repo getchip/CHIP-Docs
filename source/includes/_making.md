@@ -29,11 +29,11 @@ There is an excellent library for working with GPIO and CHIP's IO busses, made a
 
 For various reasons related to the community nature of Linux development, the GPIO expander pin numbers are different between CHIP OS kernels 4.3 and 4.4. What follows is a very technical discussion of the GPIO access. If you just want to start making stuff and don't need low-level information, you might just want to skip this section and go straight to the [python library](#python-library).
 
-If you are developing applications on CHIP that use GPIO pins and you would like consistent behavior between the two kernel versions, you need to know how to find out the base value for the GPIO values. It may be enough for you to know that the GPIO expander pins start at *408* on 4.3 and *1016* on 4.4, however, it would be ideal to calculate this in your application to truly future-proof for future kernels.
+If you are developing applications on CHIP that use GPIO pins and you would like consistent behavior between the kernel versions, you need to know how to find out the base value for the GPIO values. It may be enough for you to know that the GPIO expander pins start at *408* on 4.3, *1016* on 4.4.11, and *1013* on 4.4.13-ntc-mlc, **however, it would be ideal to calculate this in your application to truly future-proof for future kernels.**
 
-If you look in the directory `/sys/class/gpio`, you'll find two directories starting with `gpio`: `gpiochip0` and either `gpiochip408` (4.3) or `gpiochip1016` (4.4).
+If you look in the directory `/sys/class/gpio`, you'll find two directories starting with `gpio`: `gpiochip0` and either `gpiochip408` (4.3) or `gpiochip1016` (4.4.11) or `gpiochip1013` (4.4.13-ntc-mlc).
 
-The `408` and `1016` are the bases for the expander pins. If you want to definitively find out what the base is using code, you should 
+The `408` or `1016` or `1013` are the bases for the expander pins. If you want to definitively find out what the base is using code, you should 
 
 ```shell
 cat gpiochip*/label
@@ -59,7 +59,7 @@ There is a `sysfs` interface available for the GPIO. This just means you can acc
   /sys/class/gpio/gpio408/
 ```
 
-The number is somewhat unfortunate, since the `sysfs` names do not match the labels on our diagram! But is not too hard to translate. Pins XIO-P0 to P7 linearly map to `gpio408` to `gpio415` on kernel 4.3 and `gpio1016` to `gpio1023` on kernel 4.4. See [above](#kernel-4-3-vs-4-4-gpio-how-to-tell-the-difference) to learn more about that distinction.
+The number is somewhat unfortunate, since the `sysfs` names do not match the labels on our diagram! But is not too hard to translate. Pins XIO-P0 to P7 linearly map to `gpio408` to `gpio415` on kernel 4.3 and `gpio1016` to `gpio1023` on kernel 4.4.11. For kernel 4.4.13-ntc-mlc the range is `gpio1013` to `gpio1019`. See [above](#kernel-4-3-vs-4-4-gpio-how-to-tell-the-difference) to learn more about that distinction.
 
 ### Some GPIO Switch Action
 These lines of code will let us read values on pin XIO-P7. First, we tell the system we want to listen to this pin:
@@ -67,8 +67,10 @@ These lines of code will let us read values on pin XIO-P7. First, we tell the sy
 ```shell
 	#4.3
   sudo sh -c 'echo 415 > /sys/class/gpio/export'
-  #4.4
+  #4.4.11
   sudo sh -c 'echo 1023 > /sys/class/gpio/export'
+  #4.4.13-ntc-mlc
+  sudo sh -c 'echo 1019 > /sys/class/gpio/export'
 ```
 
 View the mode of the pin. It should return “in”:
@@ -76,8 +78,10 @@ View the mode of the pin. It should return “in”:
 ```shell
 	#4.3
   cat /sys/class/gpio/gpio415/direction
-  #4.4
+  #4.4.11
   cat /sys/class/gpio/gpio1023/direction
+  #4.4.13-ntc-mlc
+  cat /sys/class/gpio/gpio1019/direction
 ```
 
 Connect a jumper wire between Pin 20 (XIO-P7) and Pin 39 (GND). Now use this line of code to read the value:
@@ -85,8 +89,10 @@ Connect a jumper wire between Pin 20 (XIO-P7) and Pin 39 (GND). Now use this lin
 ```shell
 	#4.3
   cat /sys/class/gpio/gpio415/value
-	#4.4
+  #4.4.11
   cat /sys/class/gpio/gpio1023/value
+  #4.4.13-ntc-mlc
+  cat /sys/class/gpio/gpio1019/value
 ```
 
 ### Some GPIO Output
@@ -95,8 +101,10 @@ You could also change the mode of a pin from “in” to “out”
 ```shell
 	#4.3
   sudo sh -c 'echo out > /sys/class/gpio/gpio415/direction'
-  #4.4
+  #4.4.11
   sudo sh -c 'echo out > /sys/class/gpio/gpio1023/direction'
+  #4.4.13-ntc-mlc
+  sudo sh -c 'echo out > /sys/class/gpio/gpio1019/direction'
 ```
 
 Now that it's in output mode, you can write a value to the pin:
@@ -104,8 +112,10 @@ Now that it's in output mode, you can write a value to the pin:
 ```shell
 	#4.3
   sudo sh -c 'echo 1 > /sys/class/gpio/gpio415/value'
-  #4.4
+  #4.4.11
   sudo sh -c 'echo 1 > /sys/class/gpio/gpio1023/value'
+  #4.4.13-ntc-mlc
+  sudo sh -c 'echo 1 > /sys/class/gpio/gpio1019/value'
 ```
 
 If you attach an LED to the pin and ground, the LED will illuminate according to your control messages.
@@ -116,8 +126,10 @@ When you are done experimenting, you can tell the system to stop listening to th
 ```shell
 	#4.3
   sudo sh -c 'echo 415 > /sys/class/gpio/unexport'
-	#4.4
+  #4.4.11
   sudo sh -c 'echo 1023 > /sys/class/gpio/unexport'
+  #4.4.13-ntc-mlc
+  sudo sh -c 'echo 1019 > /sys/class/gpio/unexport'
 ```
 
 ### Learn More
