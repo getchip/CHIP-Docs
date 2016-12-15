@@ -204,27 +204,50 @@ and even test the hardware:
   sudo hwtest
 ```
 
+
+
+
+
+
+
 #### Customize Buildroot
-If you want to customize buildroot, use these commands before you run the `./chip-update-firmware.sh` script to flash CHIP with firmware:
+
+Buildroot is a tool for building and cross-compiling a linux distribution that only has what you need. Setting up buildroot requires either a [virtual machine](chip.html#installing-c-h-i-p-sdk) or a computer running Ubuntu OS, [setup for flashing](#setup-ubuntu-for-flashing).
+
+
+##### Modify and Build
+
+[C.H.I.P.-buildroot](https://github.com/NextThingCo/CHIP-buildroot) is used to build buildroot and the linux kernel. Its Makefile operates on a `.config` file which specifies options to include in the build. The `.config` lives in the repository's root, whereas the one for the linux kernel is: ./board/chip/linux.config/
+
+First, clone the buildroot repot and create the default config file with:
 
 ```shell
-  git clone https://github.com/NextThingCo/CHIP-buildroot
-  cd ~/CHIP-buildroot
-  make chip_defconfig
-  make nconfig
+git clone https://github.com/NextThingCo/CHIP-buildroot
+cd CHIP-buildroot
+make chip_defconfig
 ```
 
-The `nconfig` command will display a text interface in your terminal. Use your arrow keys to browse and select additional software for the buildroot OS. When you're finished with your selections, exit by hitting the F9 key, which will automatically save your custom buildroot to:
+This will copy the the `chippro_defconfig` file as `.config` in the root of the repository. Other default config targets for other hardware can be found in the `config` subdirectory. You can, of course, create your own config files and use them later.
+
+Customize the buildroot using 
 
 ```shell
-  /home/vagrant/CHIP-buildroot/.config
+make nconfig
 ```
 
-Now let's build your buildroot with your custom additions:
+For Linux (which will modify the linux.config under board/nextthing/chip/): 
 
 ```shell
-  make
+make linux nconfig
 ```
+
+Now
+
+```shell
+make
+```
+
+from the buildroot repository root. This will cross-compile linux/buildroot for C.H.I.P. Pro. The targets wind up in the ./output/images directory. If you make changes to your config files, you can just `make` again without a `make clean`. 
 
 This will take a while, maybe an hour. When finished, flash CHIP with the script:
 

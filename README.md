@@ -1,5 +1,19 @@
 # Next Thing DIP Documentation
 
+This is a source repo for documentation. If you want to see it as a website, you'll need to render it to HTML. Read on!
+
+## Quick Start
+```
+git clone https://github.com/NextThingCo/CHIP_Pro-Docs
+cd CHIP_Pro-Docs
+bundle install
+bundle exec middleman server
+```
+Go to your browser and visit [http://localhost:4567](http://localhost:4567) to view the docs.
+
+If this fails, read on!
+
+## Intro
 
 All documentation is written in markdown and staged on github pages. Published documentation is viewable on the github pages.
 

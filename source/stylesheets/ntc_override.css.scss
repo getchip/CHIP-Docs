@@ -118,16 +118,19 @@
       border: 1px solid #ccc;
     }
     td:nth-child(odd) {
-      background-color: darken($main-bg,5%);
+      background-color: darken($main-bg,0%);
     }
     th:nth-child(odd) {
-      background-color: darken($main-bg,5%);
+      background-color: darken($main-bg,12%);
+    }
+    th:nth-child(even) {
+      background-color: darken($main-bg,12%);
     }
     tr:nth-child(odd)>td {
-      background-color: lighten($main-bg,0%);
+      background-color: darken($main-bg,0%);
     }
     tr:nth-child(even)>td {
-      background-color: lighten($main-bg,0%);
+      background-color: darken($main-bg,5%);
     }
   }
 }
