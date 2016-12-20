@@ -167,7 +167,7 @@ D=3
 Therefore, listening to LCD_D4 in sysfs would begin with
 
 ```
-sudo sh -c 'echo 415 > /sys/class/gpio/export'
+sudo sh -c 'echo 100 > /sys/class/gpio/export'
 ```
 
 ## Analog to Digital Conversion
