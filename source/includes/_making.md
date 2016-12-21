@@ -29,7 +29,7 @@ There is an excellent library for working with GPIO and CHIP's IO busses, made a
 
 For various reasons related to the community nature of Linux development, the GPIO expander pin numbers are different between CHIP OS kernels 4.3 and 4.4. What follows is a very technical discussion of the GPIO access. If you just want to start making stuff and don't need low-level information, you might just want to skip this section and go straight to the [python library](#python-library).
 
-If you are developing applications on CHIP that use GPIO pins and you would like consistent behavior between the kernel versions, you need to know how to find out the base value for the GPIO values. It may be enough for you to know that the GPIO expander pins start at *408* on 4.3, *1016* on 4.4.11, and *1013* on 4.4.13-ntc-mlc, **however, it would be ideal to calculate this in your application to truly future-proof for future kernels.**
+If you are developing applications on CHIP that use GPIO pins and you would like consistent behavior between the kernel versions, you need to know how to find out the base value for the GPIO values. It may be enough for you to know that the GPIO expander pins start at *408* on 4.3, *1016* on 4.4.11, and *1013* on 4.4.13-ntc-mlc, **however, it would be ideal to calculate this in your application to truly future-proof for future kernels.** 
 
 If you look in the directory `/sys/class/gpio`, you'll find two directories starting with `gpio`: `gpiochip0` and either `gpiochip408` (4.3) or `gpiochip1016` (4.4.11) or `gpiochip1013` (4.4.13-ntc-mlc).
 
@@ -51,7 +51,11 @@ Here is a bash script to compute the base (courtesy of [bbs user @fordsfords](ht
 LABEL_FILE=`grep -l pcf8574a /sys/class/gpio/*/*label` BASE_FILE=`dirname $LABEL_FILE`/base 
 BASE=`cat $BASE_FILE`
 ```
- 
+
+Finally, you can view a practical example of calcualting the "xio base" in the CHIP_IO library [common.c code](https://github.com/xtacocorex/CHIP_IO/blob/master/source/common.c#L148).
+
+
+
 ### How The System Sees GPIO
 There is a `sysfs` interface available for the GPIO. This just means you can access the GPIO states in a file-system-like manner. For example, you can reference XIO-P0 using this path:
 
