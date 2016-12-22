@@ -1,4 +1,4 @@
-# Next Thing DIP Documentation
+# Next Thing CHIP Documentation
 
 This is a source repo for documentation. If you want to see it as a website, you'll need to render it to HTML. Read on!
 
