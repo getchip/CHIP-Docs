@@ -54,6 +54,7 @@ Unfortunately, due to the nature of how Windows manages drivers, the flashing pr
 ### MacOS specific
    * There are some times where using USB3 ports will cause the flashing to fail. If you can, try using a USB2 port, not a USB3. Recent Macs have only USB3 ports. If you find yourself with a modern Mac, try using a USB2 hub in your USB3 port and plug C.H.I.P. into that.
    * If you get stuck "Waiting for Fastboot" and the above options don't work, you should be able to install a "headless no fastboot" image. However, it will take quite a bit longer, and the Operating System won't have a GUI.
+   * OS X El Capitan has been known to have issue with the flashing process. If a new cable or USB2 hub does not work and you are able to, upgrade to macOS Sierra.
 
 
 ### Linux-specific
