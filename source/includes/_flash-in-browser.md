@@ -65,8 +65,8 @@ Linux requires permissions to write to C.H.I.P. when its plugged into your compu
 You need to paste the following into a terminal:
 
 ```shell
-sudo usermod -a -G dialout $(logname)
-sudo usermod -a -G plugdev $(logname)
+sudo usermod -a -G dialout $(USER)
+sudo usermod -a -G plugdev $(USER)
 
 # Create udev rules 
 echo -e 'SUBSYSTEM=="usb", ATTRS{idVendor}=="1f3a", ATTRS{idProduct}=="efe8", GROUP="plugdev", MODE="0660" SYMLINK+="usb-chip"
@@ -81,7 +81,7 @@ Then logout and log back in.
 
 For the curious:
 
-   * logname: outputs your username 
+   * USER: outputs your username 
    * dialout: gives non-root access to serial connections 
    * plugdev: allows non-root mounting with pmount 
    
