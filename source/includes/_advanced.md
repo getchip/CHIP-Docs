@@ -238,7 +238,7 @@ make nconfig
 For Linux (which will modify the linux.config under board/nextthing/chip/): 
 
 ```shell
-make linux nconfig
+make linux-nconfig
 ```
 
 Now
@@ -270,7 +270,7 @@ CHIP-buildroot/
 ├── make chippro_defconfig
 │   ├── apply pre-existing chippro-specific configuration to buildroot
 │   └── apply pre-existing chippro-specific configuration to kernel
-├── make linux_nconfig
+├── make linux-nconfig
 │   └── make realtime changes to currently applied kernel defconfig
 └── make nconfig
     └── make realtime changes to currently applied buildroot defconfig
