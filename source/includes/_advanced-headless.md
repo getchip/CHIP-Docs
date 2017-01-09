@@ -148,19 +148,22 @@ No matter the software, you'll need to set some settings for the port (aka conne
 If you are using screen, the command will look something like this:
 
 ```shell
-screen /dev/tty.usbserial 115200
+screen /dev/tty.usbserial 115200 # on macOS
+screen /dev/ttyUSB0 115200 # on linux
 ```
 
-or
+Here's a clever way that work on any system to just connect to the most recent serial device you plugged in:
+
 
 ```shell
-screen /dev/ttyUSB0 115200
+screen $(ls -tw 1 /dev/tty* | head -1) 115200
 ```
 
-What comes after the '/dev/' may vary among different systems and connections. You can narrow down the choices by using the command
+What comes after the '/dev/' may vary among different systems and connections. You can narrow down the choices by using one of the commands
 
 ```shell
-ls /dev/tty*
+ls /dev/tty* # everything
+ls -t /dev/tty* | head -5 # the five most recent 
 ```
 
 to list the serial devices. 
