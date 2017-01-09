@@ -145,7 +145,16 @@ No matter the software, you'll need to set some settings for the port (aka conne
   * Flow control: none
 
 #### Using screen
-If you are using screen, the command will look something like this:
+If you are using screen,
+plug in your CHIP and wait one minute to boot.
+Now we can use the following command that tries to connect to what you plugged-in last.
+
+```shell
+screen $(ls -tw 1 /dev/tty* | head -1) 115200
+```
+
+the command between `screen` and `115200` looks for a path,
+resulting in something like:
 
 ```shell
 screen /dev/tty.usbserial 115200
@@ -160,7 +169,7 @@ screen /dev/ttyUSB0 115200
 What comes after the '/dev/' may vary among different systems and connections. You can narrow down the choices by using the command
 
 ```shell
-ls /dev/tty*
+ls -t /dev/tty* | head -5
 ```
 
 to list the serial devices. 
