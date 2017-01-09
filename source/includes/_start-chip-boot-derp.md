@@ -57,13 +57,17 @@ One of the great powers of Linux is the so-called "command-line." This simple te
 When you first use the Terminal Emulator program, you may quickly find that you do not have permission to do something. That is because many commands are safely reserved for "root" access, and you are automatically logged in as the "chip" user. Don't fear: you can often use the `sudo` command and use the default password `chip` to execute these restricted commands.
 
 Finally, it is probably wise to change the default password on your CHIP. You can do with with
+
 ```shell
 passwd
 ```
+
 or
+
 ```shell
 sudo passwd root
 ```
+
 and you'll be asked for a new password. Don't forget it!!
 
 If you are such a fan of the command line, you may want to boot with out the desktop and window system. Instructions for that are [here](#boot-into-console)
