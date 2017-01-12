@@ -28,6 +28,9 @@ What's really great is that if you plug in to a charger and plug in a battery, t
 
 Now you're ready to [connect CHIP to a screen, keyboard and mouse](#recommended-accessories) or even work on CHIP from [another computer](#headless-chip).
 
+### Button
+There is a tiny tiny button on CHIP next to pin header U13 that is used for turning CHIP on or off. If CHIP is off and connected to a power source, hold down the button for one second to power it up. To turn CHIP off (rather brutally), hold the button for 10 seconds. We recommend using the operating system to power CHIP off, but if you need to, you can use this button.
+
 ## Connect To WiFi
 Connecting to a WiFi network is easy using the WiFi icon the top right system tray. Just select a network to initiate a connection. If the network requires a password you’ll be prompted for it. You can also [set up Wi-Fi from the command line](#wifi-connection).
 
