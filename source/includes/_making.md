@@ -63,7 +63,7 @@ There is a `sysfs` interface available for the GPIO. This just means you can acc
   /sys/class/gpio/gpio408/
 ```
 
-The number is somewhat unfortunate, since the `sysfs` names do not match the labels on our diagram! But is not too hard to translate. Pins XIO-P0 to P7 linearly map to `gpio408` to `gpio415` on kernel 4.3 and `gpio1016` to `gpio1023` on kernel 4.4.11. For kernel 4.4.13-ntc-mlc the range is `gpio1013` to `gpio1019`. See [above](#kernel-4-3-vs-4-4-gpio-how-to-tell-the-difference) to learn more about that distinction.
+The number is somewhat unfortunate, since the `sysfs` names do not match the labels on our diagram! But is not too hard to translate. Pins XIO-P0 to P7 linearly map to `gpio408` to `gpio415` on kernel 4.3 and `gpio1016` to `gpio1023` on kernel 4.4.11. For kernel 4.4.13-ntc-mlc the range is `gpio1013` to `gpio1020`. See [above](#kernel-4-3-vs-4-4-gpio-how-to-tell-the-difference) to learn more about that distinction.
 
 ### Some GPIO Switch Action
 These lines of code will let us read values on pin XIO-P7. First, we tell the system we want to listen to this pin:
@@ -74,7 +74,7 @@ These lines of code will let us read values on pin XIO-P7. First, we tell the sy
   #4.4.11
   sudo sh -c 'echo 1023 > /sys/class/gpio/export'
   #4.4.13-ntc-mlc
-  sudo sh -c 'echo 1019 > /sys/class/gpio/export'
+  sudo sh -c 'echo 1020 > /sys/class/gpio/export'
 ```
 
 View the mode of the pin. It should return “in”:
@@ -85,7 +85,7 @@ View the mode of the pin. It should return “in”:
   #4.4.11
   cat /sys/class/gpio/gpio1023/direction
   #4.4.13-ntc-mlc
-  cat /sys/class/gpio/gpio1019/direction
+  cat /sys/class/gpio/gpio1020/direction
 ```
 
 Connect a jumper wire between Pin 20 (XIO-P7) and Pin 39 (GND). Now use this line of code to read the value:
@@ -96,7 +96,7 @@ Connect a jumper wire between Pin 20 (XIO-P7) and Pin 39 (GND). Now use this lin
   #4.4.11
   cat /sys/class/gpio/gpio1023/value
   #4.4.13-ntc-mlc
-  cat /sys/class/gpio/gpio1019/value
+  cat /sys/class/gpio/gpio1020/value
 ```
 
 ### Some GPIO Output
@@ -108,7 +108,7 @@ You could also change the mode of a pin from “in” to “out”
   #4.4.11
   sudo sh -c 'echo out > /sys/class/gpio/gpio1023/direction'
   #4.4.13-ntc-mlc
-  sudo sh -c 'echo out > /sys/class/gpio/gpio1019/direction'
+  sudo sh -c 'echo out > /sys/class/gpio/gpio1020/direction'
 ```
 
 Now that it's in output mode, you can write a value to the pin:
@@ -119,7 +119,7 @@ Now that it's in output mode, you can write a value to the pin:
   #4.4.11
   sudo sh -c 'echo 1 > /sys/class/gpio/gpio1023/value'
   #4.4.13-ntc-mlc
-  sudo sh -c 'echo 1 > /sys/class/gpio/gpio1019/value'
+  sudo sh -c 'echo 1 > /sys/class/gpio/gpio1020/value'
 ```
 
 If you attach an LED to the pin and ground, the LED will illuminate according to your control messages.
@@ -133,7 +133,7 @@ When you are done experimenting, you can tell the system to stop listening to th
   #4.4.11
   sudo sh -c 'echo 1023 > /sys/class/gpio/unexport'
   #4.4.13-ntc-mlc
-  sudo sh -c 'echo 1019 > /sys/class/gpio/unexport'
+  sudo sh -c 'echo 1020 > /sys/class/gpio/unexport'
 ```
 
 ### Learn More
