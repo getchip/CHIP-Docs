@@ -32,7 +32,7 @@ There are a few reasons you'd want to use a serial connection:
   * You're old-school and like it
   * You need to see terminal output from the beginning of boot
 
-Connect a USB to UART cable to the Ground (GND), Transmit (TX), and Recieve (RX) pins on CHIP
+Connect a USB to UART cable to the Ground (GND), Transmit (TX), and Receive (RX) pins on CHIP
 
 We'll find those on header U14, pin outs 1,3 and 5.
 See the following diagram, which assumes CHIP's USB ports are pointed up...
